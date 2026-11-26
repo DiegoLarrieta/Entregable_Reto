@@ -1,13 +1,9 @@
-# DATOS DE TERNIUM: solo los Excel originales en data/raw/ (repo PRIVADO).
-# Si el repo se hace público, quitar data/raw/ del historial primero.
-data/interim/*
-!data/**/.gitkeep
+# Solo se versionan los Excel originales de data/mc4 y data/skp
 *.xlsx
-!data/raw/mc4/*.xlsx
-!data/raw/skp/*.xlsx
-*.xls
-*.parquet
+!data/mc4/*.xlsx
+!data/skp/*.xlsx
 *.csv
+*.parquet
 
 # Python / Jupyter
 __pycache__/

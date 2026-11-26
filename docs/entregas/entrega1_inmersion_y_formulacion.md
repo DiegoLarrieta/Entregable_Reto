@@ -80,7 +80,7 @@ Ejemplos de la guía:
 Referencias en APA, mínimo 10 académicas, todas verificadas (una inventada = plagio). Anexos: diccionario razonado y preguntas al Socio Formador.
 
 ## Repositorio reproducible
-Código desde los archivos originales sin ediciones manuales; `requirements.txt`; rutas configurables e instrucciones en `README.md`; reglas de limpieza documentadas antes de ver resultados; **sin datos de Ternium en repos públicos**. Estructura sugerida: `notebooks/01..04`, `src/carga.py`, `src/depuracion.py`, `src/visualizacion.py`, `outputs/figuras/`, `README.md` (es la que sigue este repo).
+Código desde los archivos originales sin ediciones manuales; `requirements.txt`; rutas configurables e instrucciones en `README.md`; reglas de limpieza documentadas antes de ver resultados; **sin datos de Ternium en repos públicos**. Estructura sugerida por el profesor: `notebooks/01..04`, `src/carga.py`, `src/depuracion.py`, `src/visualizacion.py`, `outputs/figuras/`, `README.md`. Este repo la simplifica: un solo `src/ternium.py` y `figuras/` en la raíz.
 
 ## Checklist antes de entregar
 - ¿La pregunta se responde con las variables disponibles?

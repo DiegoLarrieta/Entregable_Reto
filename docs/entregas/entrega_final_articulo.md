@@ -31,7 +31,7 @@ Título (hallazgo, no tema) · Resumen ~250 palabras (al final) · Introducción
 ## Repositorio (además de lo de la E1)
 1. Cada figura y tabla se regenera con un comando o notebook indicado en el README.
 2. Plan de análisis documentado (`docs/plan_de_analisis.md`).
-3. Tabla completa de contrastes como archivo de salida (`outputs/tablas/`).
+3. Tabla completa de contrastes como archivo de salida (carpeta `tablas/`, por crear).
 
 ## Clases de contribución
 | Clase | Aporta a Ternium | No puede afirmar |

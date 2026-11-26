@@ -26,73 +26,50 @@ Ternium pregunta si conviene diferenciar recetas del Skinpass por producto. Liga
 
 <sub>Imágenes ilustrativas: molino caliente (foto de AHMSA) y castillo de laminación (ilustración de SMS Siemag); no son las líneas de Pesquería.</sub>
 
-## Arranque rápido (5 minutos)
+## Cómo correrlo
 
+**En Google Colab** (lo más fácil):
+1. Abre un notebook de `notebooks/` en Colab (Archivo > Abrir notebook > GitHub).
+2. Crea un token de GitHub con acceso de lectura a este repo y guárdalo en Colab: icono de llave > Secretos > `GITHUB_TOKEN`.
+3. *Entorno de ejecución > Ejecutar todas*. La primera celda clona el repo con los datos e instala lo necesario.
+
+**En tu computadora:**
 ```bash
 git clone https://github.com/DiegoLarrieta/Entregable_Reto.git
 cd Entregable_Reto
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-# los 36 Excel ya vienen en data/raw/; si faltara alguno:
-python scripts/descargar_datos.py
+jupyter lab notebooks/
 ```
 
-Luego, en cualquier notebook:
-
-```python
-import sys; sys.path.insert(0, "..")   # si el notebook está en notebooks/
-from src.carga import cargar_mc4, cargar_skp, unir_mc4_skp
-mc4 = cargar_mc4()   # 1a vez ~1 min; después segundos (cache en data/interim/)
-skp = cargar_skp()
-```
-
-### En Google Colab
-```python
-!git clone https://github.com/DiegoLarrieta/Entregable_Reto.git   # pide token si el repo es privado
-%cd Entregable_Reto
-!pip install -q python-calamine
-# los Excel ya vienen en data/raw/ al clonar
-```
+Cada notebook tarda alrededor de un minuto en cargar los Excel.
 
 ## Estructura
 
 ```
 Entregable_Reto/
-├── data/                      # raw/ sí está en el repo (privado); interim/ no
-│   ├── raw/mc4/               # 24 Excel quincenales del MC4 (149,734 rollos)
-│   ├── raw/skp/               # 12 Excel mensuales del Skinpass (58,786 piezas)
-│   └── interim/               # caché .parquet que genera src/carga.py
+├── data/
+│   ├── mc4/          # 24 Excel quincenales del Molino Caliente 4 (149,734 rollos)
+│   └── skp/          # 12 Excel mensuales del Skinpass (58,786 piezas)
 ├── notebooks/
-│   └── 00_colab_original_EDA.ipynb   # el Colab de la Entrega 1, tal cual
-├── src/                       # código compartido: se importa, no se copia
-│   ├── carga.py               # leer MC4 y SKP, unirlos rollo a rollo
-│   ├── depuracion.py          # reglas fijas: corona válida, producto, variables prohibidas
-│   └── visualizacion.py       # estilo común de figuras y guardado
-├── scripts/
-│   └── descargar_datos.py     # baja los 36 archivos del Drive
-├── outputs/
-│   ├── figuras/               # cada figura del artículo, regenerable
-│   └── tablas/                # tabla completa de contrastes, etc.
-├── docs/
-│   ├── entregas/              # resumen de lo que pide cada entrega
-│   ├── plan_de_analisis.md    # decisiones fijadas antes de ver resultados
-│   └── preguntas_socio_formador.md
+│   ├── 01_datos.ipynb      # carga, auditoría, reglas de limpieza, población, liga MC4 → Skinpass
+│   ├── 02_calidad.ipynb    # Fenómeno 1: qué significa "calidad" (figura 1)
+│   ├── 03_receta.ipynb     # Fenómeno 2: de dónde sale la receta (figura 2)
+│   └── 04_programa.ipynb   # Fenómeno 4: el programa de laminación (figura 3)
+├── src/
+│   └── ternium.py    # carga de datos, reglas de limpieza y estilo de figuras: todo lo compartido
+├── figuras/          # PNG y PDF de cada figura; se regeneran al correr los notebooks
+├── docs/             # guías de las entregas, plan de análisis, preguntas a Ternium
 └── requirements.txt
 ```
 
-### Notebooks planeados (se irán llenando)
-| Notebook | Contenido | Viene de |
+| Figura | Notebook | Qué muestra |
 |---|---|---|
-| `01_carga_y_auditoria` | Conteos, faltantes, llave MC4↔SKP, cobertura de ruta teórica | Entrega 1 §2 |
-| `02_diccionario_y_poblacion` | Variables usadas, definición de producto, población final | Entrega 1 §2.3 |
-| `03_fenomeno1_etiquetas_de_calidad` | Defectos automáticos vs manuales, variables prohibidas | Entrega 1 §4.1 |
-| `04_fenomeno2_asignacion_de_consignas` | PRAM fija la consigna; soporte por producto | Entrega 1 §4.2 |
-| `05_programa_de_laminacion` | Secuencia, programa como grupo | Entrega 1 §4.3 |
-| `06_skinpass_preset_vs_real` | Fuerza, bending, tensión: preset contra real | Nuevo |
-| `07_modelo_principal` | Regresión de efectos mixtos + validación por programa | Entrega final |
-| `08_comprobaciones` | Control negativo, robustez, estabilidad temporal | Entrega final |
+| `fig0_cobertura` | 01 | Un año completo y continuo de datos en MC4 y Skinpass |
+| `fig1_calidad` | 02 | Los defectos más frecuentes son reglas automáticas |
+| `fig2_receta` | 03 | La consigna de enrollado la fija el PRAM (ligado al cliente) |
+| `fig3_programa` | 04 | La posición en el programa arrastra la mezcla de producto |
 
-Regla: **un notebook = una pregunta**, nombrado con número para que se lea en orden, y que corra de principio a fin con *Restart & Run All*.
+**Siguientes notebooks** (entrega final): `05_skinpass` (preset contra real), `06_modelo` (análisis principal con errores agrupados por programa) y `07_comprobaciones` (control negativo, robustez, estabilidad en el tiempo).
 
 ## Entregas
 | Entrega | Qué pide | Estado |
@@ -101,11 +78,12 @@ Regla: **un notebook = una pregunta**, nombrado con número para que se lea en o
 | [Entrega final: el artículo](docs/entregas/entrega_final_articulo.md) | Análisis principal con validación, traducción a Ternium, propuesta de experimento | En curso |
 
 ## Reglas del equipo
-1. Nadie edita los Excel. Toda limpieza va en `src/depuracion.py`.
-2. Si una función se usa en 2 notebooks, va a `src/`.
-3. Las figuras se guardan con `src.visualizacion.guardar(fig, "nombre")`, nunca capturas de pantalla.
-4. Trabajen en una rama (`git checkout -b diego/fenomeno2`) y abran Pull Request a `main`.
-5. Antes de hacer commit de un notebook: *Restart & Run All* y verifiquen que no imprima tablas enormes de datos.
+1. Nadie edita los Excel. Toda regla de limpieza va en `src/ternium.py`.
+2. Si una función se usa en 2 notebooks, va a `src/ternium.py`.
+3. Las figuras se guardan con `guardar(fig, "nombre")`, nunca capturas de pantalla.
+4. Cada notebook: una pregunta, markdown breve antes de cada paso y un "Qué vemos" después de cada tabla o figura.
+5. Trabajen en una rama (`git checkout -b diego/fenomeno2`) y abran Pull Request a `main`.
+6. Antes de hacer commit de un notebook: *Restart & Run All* y verifiquen que no imprima tablas enormes de datos.
 
 ## Datos: llave y definiciones
 - **Llave MC4 ↔ Skinpass:** `SKP["Material Entrada"] == MC4["Material Salida"]` (se liga ~97%).

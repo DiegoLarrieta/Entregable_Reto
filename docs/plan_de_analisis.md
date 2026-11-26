@@ -9,7 +9,7 @@ Se fija ANTES de correr el modelo principal. Cualquier cambio se anota abajo con
 | Resultado | Fuerza real del Skinpass (alternativa: Fuerza real − Preset) | Por confirmar con profesor |
 | Exposición / predictores | Corona relativa, acuñamiento, temperaturas de MC4 | Propuesta |
 | Conjunto de ajuste | Elongación, espesor, ancho, grado | Propuesta |
-| Prohibidas | Dictamen, Resolución, Calidad Sugerida, Defecto*, Causa*, Observaciones*, fechas de registro (`src/depuracion.py`) | Fijo |
+| Prohibidas | Dictamen, Resolución, Calidad Sugerida, Defecto*, Causa*, Observaciones*, fechas de registro (`src/ternium.py`) | Fijo |
 | Exclusiones | Corona fuera de 0 a 300 µm; filas sin llave MC4 | Fijo |
 | Validación | GroupKFold por Programa MC4; también corte temporal por trimestre | Propuesta |
 | Comprobaciones | Control negativo, estabilidad por trimestre, robustez a umbrales de depuración | Propuesta |
