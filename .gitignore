@@ -1,7 +1,10 @@
-# DATOS DE TERNIUM: NUNCA se suben (acuerdo de confidencialidad)
+# DATOS DE TERNIUM: solo los Excel originales en data/raw/ (repo PRIVADO).
+# Si el repo se hace público, quitar data/raw/ del historial primero.
 data/interim/*
 !data/**/.gitkeep
 *.xlsx
+!data/raw/mc4/*.xlsx
+!data/raw/skp/*.xlsx
 *.xls
 *.parquet
 *.csv

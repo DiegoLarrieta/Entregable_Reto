@@ -4,7 +4,7 @@ Proyecto del curso *Desarrollo de aplicaciones avanzadas de ciencias computacion
 
 **Equipo:** Francisco Vaquera Saavedra · Armando Calzada Delgado · María José Vital Castillo · Luis Diego Dominguez Larrieta
 
-> ⚠️ **Confidencial.** Los datos están cubiertos por un acuerdo con Ternium. Este repositorio **no contiene datos**: los Excel se descargan localmente con `scripts/descargar_datos.py` y `.gitignore` impide subirlos. Nunca hagan commit de archivos .xlsx, .csv o .parquet, ni de notebooks con tablas de datos impresas.
+> ⚠️ **Confidencial. Este repositorio debe seguir siendo PRIVADO.** Incluye los 36 Excel originales de Ternium en `data/raw/`, cubiertos por un acuerdo de confidencialidad. No lo hagan público, no lo forkeen a cuentas personales públicas y no suban los datos a ningún otro lado. Si algún día se hace público, primero hay que borrar `data/raw/` de todo el historial.
 
 ## El proyecto en una frase
 Ternium pregunta si conviene diferenciar recetas del Skinpass por producto. Ligamos un año de rollos del Molino Caliente 4 (MC4) con su paso por el Skinpass para medir qué tanto la condición de entrada explica lo que el Skinpass tuvo que hacer, más allá de la receta.
@@ -16,7 +16,8 @@ git clone https://github.com/DiegoLarrieta/Entregable_Reto.git
 cd Entregable_Reto
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python scripts/descargar_datos.py                   # baja los 36 Excel a data/raw/ (~140 MB)
+# los 36 Excel ya vienen en data/raw/; si faltara alguno:
+python scripts/descargar_datos.py
 ```
 
 Luego, en cualquier notebook:
@@ -33,14 +34,14 @@ skp = cargar_skp()
 !git clone https://github.com/DiegoLarrieta/Entregable_Reto.git   # pide token si el repo es privado
 %cd Entregable_Reto
 !pip install -q python-calamine
-!python scripts/descargar_datos.py
+# los Excel ya vienen en data/raw/ al clonar
 ```
 
 ## Estructura
 
 ```
 Entregable_Reto/
-├── data/                      # NO se sube a GitHub
+├── data/                      # raw/ sí está en el repo (privado); interim/ no
 │   ├── raw/mc4/               # 24 Excel quincenales del MC4 (149,734 rollos)
 │   ├── raw/skp/               # 12 Excel mensuales del Skinpass (58,786 piezas)
 │   └── interim/               # caché .parquet que genera src/carga.py
