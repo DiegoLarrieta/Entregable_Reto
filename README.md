@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/img/ternium_logo.png" alt="Ternium" width="320"></p>
+
 # Ternium MC4 → Skinpass
 
 Proyecto del curso *Desarrollo de aplicaciones avanzadas de ciencias computacionales* (Tec de Monterrey, Ago-Dic 2026), con datos de Ternium Pesquería.
@@ -8,6 +10,23 @@ Proyecto del curso *Desarrollo de aplicaciones avanzadas de ciencias computacion
 
 ## El proyecto en una frase
 Ternium pregunta si conviene diferenciar recetas del Skinpass por producto. Ligamos un año de rollos del Molino Caliente 4 (MC4) con su paso por el Skinpass para medir qué tanto la condición de entrada explica lo que el Skinpass tuvo que hacer, más allá de la receta.
+
+## El proceso en 30 segundos
+
+<table>
+<tr>
+<td width="50%"><img src="docs/img/molino_caliente.png" alt="Molino caliente laminando una barra al rojo vivo"></td>
+<td width="50%"><img src="docs/img/skinpass.png" alt="Castillo de laminación tipo Skinpass con rodillos de trabajo y de apoyo"></td>
+</tr>
+<tr>
+<td><b>1. Molino Caliente 4 (MC4).</b> El planchón se calienta a ~1,200 °C, se adelgaza en desbaste (R1, R2) y en el tren acabador (F1 a F7), se enfría en la mesa y se enrolla. Aquí se define la <b>corona</b> (centro más grueso que los bordes), el acuñamiento y la temperatura de enrollado. <i>Datos: 24 archivos MC4_PSQ.</i></td>
+<td><b>2. Skinpass.</b> Días después (~5), el rollo pasa por un laminado en frío muy ligero: lo estira apenas 1 a 2% (<b>elongación</b>) con una <b>fuerza</b>, <b>tensiones</b> y <b>bending</b> (doblado de los rodillos) para corregir planeza y dar el acabado final. <i>Datos: 12 archivos SKP_PSQ.</i></td>
+</tr>
+</table>
+
+**La pregunta de Ternium:** hoy el Skinpass usa una receta por tipo de material. ¿Conviene diferenciarla por producto según cómo llega cada rollo del MC4? Para eso ligamos cada rollo del MC4 con su paso por el Skinpass.
+
+<sub>Imágenes ilustrativas: molino caliente (foto de AHMSA) y castillo de laminación (ilustración de SMS Siemag); no son las líneas de Pesquería.</sub>
 
 ## Arranque rápido (5 minutos)
 
