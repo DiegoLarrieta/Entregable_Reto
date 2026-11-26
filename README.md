@@ -6,8 +6,6 @@ Proyecto del curso *Desarrollo de aplicaciones avanzadas de ciencias computacion
 
 **Equipo:** Francisco Vaquera Saavedra · Armando Calzada Delgado · María José Vital Castillo · Luis Diego Dominguez Larrieta
 
-> ⚠️ **Confidencial. Este repositorio debe seguir siendo PRIVADO.** Incluye los 36 Excel originales de Ternium en `data/raw/`, cubiertos por un acuerdo de confidencialidad. No lo hagan público, no lo forkeen a cuentas personales públicas y no suban los datos a ningún otro lado. Si algún día se hace público, primero hay que borrar `data/raw/` de todo el historial.
-
 ## El proyecto en una frase
 Ternium pregunta si conviene diferenciar recetas del Skinpass por producto. Ligamos un año de rollos del Molino Caliente 4 (MC4) con su paso por el Skinpass para medir qué tanto la condición de entrada explica lo que el Skinpass tuvo que hacer, más allá de la receta.
 
