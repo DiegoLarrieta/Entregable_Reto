@@ -1,0 +1,19 @@
+# DATOS DE TERNIUM: NUNCA se suben (acuerdo de confidencialidad)
+data/interim/*
+!data/**/.gitkeep
+*.xlsx
+*.xls
+*.parquet
+*.csv
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+
+# Sistema
+.DS_Store
+Thumbs.db
