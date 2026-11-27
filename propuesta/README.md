@@ -2,6 +2,8 @@
 
 Abre [`propuesta.html`](propuesta.html) en el navegador para ver la propuesta completa (descárgala o clona el repo; GitHub no renderiza HTML). El análisis está en [`notebooks/investigacion.ipynb`](../notebooks/investigacion.ipynb).
 
+El catálogo de columnas con dato está en [`variables.html`](variables.html): qué variables de los Excel de MC4 y Skinpass se pueden usar, y cuáles vienen vacías.
+
 ## Hallazgo
 Usamos la columna `Linea Origen` de cada defecto del Skinpass (14,417 defectos en 58,786 piezas de 2025) y ligamos el 97.1% de las piezas con su rollo del MC4.
 
