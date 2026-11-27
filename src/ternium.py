@@ -111,13 +111,16 @@ def aplicar_reglas(df: pd.DataFrame) -> pd.DataFrame:
 def defectos_largo(df: pd.DataFrame) -> pd.DataFrame:
     """Un renglón por defecto registrado (los 5 bloques Defecto (k) apilados).
 
+    Sirve para el MC4 (califica cada defecto con 'Dictamen (k)') y para el Skinpass ('Calidad (k)').
     Columnas: d (defecto), a (1 = registro automático), r (dictamen del defecto),
-    obs (texto del sistema), ret (True si RETENIDO), row (índice del rollo).
+    obs (texto del sistema), linea (Linea Origen), ret (True si RETENIDO), row (índice del rollo o pieza).
     """
+    califica = "Dictamen" if "Dictamen (1)" in df.columns else "Calidad"
     partes = []
     for k in range(1, 6):
-        t = df[[f"Defecto ({k})", f"Registro Automatico ({k})", f"Dictamen ({k})", f"Observaciones ({k})"]].copy()
-        t.columns = ["d", "a", "r", "obs"]
+        t = df[[f"Defecto ({k})", f"Registro Automatico ({k})", f"{califica} ({k})", f"Observaciones ({k})",
+                f"Linea Origen ({k})"]].copy()
+        t.columns = ["d", "a", "r", "obs", "linea"]
         t["row"] = df.index
         partes.append(t.dropna(subset=["d"]))
     D = pd.concat(partes)
