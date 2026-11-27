@@ -1,0 +1,301 @@
+<title>Propuesta MC4–Skinpass</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: una columna de lectura (~68ch) con bloques de datos que se abren a lo ancho; color de línea = MC4 (naranja de colada) y Skinpass (azul acero), igual que la figura. */
+:root {
+  --bg: #f4f5f6;
+  --paper: #ffffff;
+  --fg: #1b2026;
+  --muted: #5a636d;
+  --rule: #d9dde1;
+  --mc4: #d9470f;
+  --skp: #1f4e79;
+  --ambas: #7f5a83;
+  --soft-mc4: #fbe9e1;
+  --soft-skp: #e3ecf5;
+  --ok: #2f7a4b;
+  --warn: #a86400;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12161b; --paper: #1a2027; --fg: #e6e9ec; --muted: #9aa4ae; --rule: #2e3740;
+    --mc4: #f2703c; --skp: #6fa3d6; --ambas: #b48fb8; --soft-mc4: #3a2318; --soft-skp: #1b2b3b;
+    --ok: #5fbf83; --warn: #e0a24a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12161b; --paper: #1a2027; --fg: #e6e9ec; --muted: #9aa4ae; --rule: #2e3740;
+  --mc4: #f2703c; --skp: #6fa3d6; --ambas: #b48fb8; --soft-mc4: #3a2318; --soft-skp: #1b2b3b;
+  --ok: #5fbf83; --warn: #e0a24a; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 920px; margin: 0 auto; padding-block: 40px 72px; display: grid; gap: 56px; }
+.read { max-width: 68ch; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.6rem; font-weight: 600; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p { margin: 0; }
+section { display: grid; gap: 18px; }
+.eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.15rem; color: var(--fg); }
+.muted { color: var(--muted); }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 0 4px; }
+a { color: var(--skp); }
+strong { font-weight: 600; }
+
+header.top { display: grid; gap: 14px; border-bottom: 3px solid var(--fg); padding-bottom: 24px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 0.9rem; color: var(--muted); }
+
+.mc4 { color: var(--mc4); font-weight: 600; }
+.skp { color: var(--skp); font-weight: 600; }
+
+/* Cifras clave */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.stat { background: var(--paper); padding: 18px 18px 16px; display: grid; gap: 4px; align-content: start; }
+.stat .v { font-family: var(--display); font-size: 2rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat .l { font-size: 0.88rem; color: var(--muted); line-height: 1.4; }
+
+figure { margin: 0; display: grid; gap: 10px; }
+figure .frame { background: #ffffff; border: 1px solid var(--rule); padding: 8px; overflow-x: auto; }
+figure img { display: block; width: 100%; min-width: 640px; height: auto; }
+figcaption { font-size: 0.88rem; color: var(--muted); }
+
+/* Toneladas: barras a escala */
+.tons { display: grid; gap: 14px; background: var(--paper); border: 1px solid var(--rule); padding: 20px; }
+.trow { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 6.5rem; gap: 12px; align-items: center; }
+.trow .name { font-size: 0.95rem; line-height: 1.3; }
+.trow .name small { display: block; color: var(--muted); font-size: 0.8rem; }
+.track { height: 22px; background: var(--bg); position: relative; }
+.bar { position: absolute; inset: 0 auto 0 0; }
+.trow .val { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; font-size: 0.92rem; }
+.trow.sub .name { padding-left: 16px; border-left: 2px solid var(--rule); }
+.trow.hi .name { font-weight: 600; }
+.scale { font-size: 0.8rem; color: var(--muted); }
+
+/* Comparación ancho vs peso */
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.case { background: var(--paper); border: 1px solid var(--rule); border-top: 4px solid var(--mc4); padding: 18px; display: grid; gap: 10px; align-content: start; }
+.case .tag { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.case ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 6px; }
+
+/* Tabla de literatura */
+.tablewrap { overflow-x: auto; border: 1px solid var(--rule); background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 0.92rem; }
+th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { width: 26%; }
+td .yr { color: var(--muted); }
+
+/* Pregunta detonadora */
+.question { background: var(--soft-mc4); border-left: 6px solid var(--mc4); padding: 22px 24px; display: grid; gap: 10px; }
+.question p.q { font-family: var(--display); font-size: clamp(1.3rem, 3vw, 1.65rem); font-weight: 600; line-height: 1.25; text-wrap: balance; }
+.alt { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.alt > div { background: var(--paper); border: 1px solid var(--rule); padding: 16px; display: grid; gap: 6px; align-content: start; }
+.badge { justify-self: start; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border: 1px solid currentColor; }
+.badge.main { color: var(--mc4); }
+.badge.sec { color: var(--skp); }
+.badge.alt2 { color: var(--muted); }
+
+ol.steps, ul.plain { margin: 0; padding-left: 1.3rem; display: grid; gap: 8px; }
+
+.formula { font-family: var(--mono); background: var(--paper); border: 1px solid var(--rule); padding: 14px 16px; font-size: 0.95rem; overflow-x: auto; }
+
+.benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.benefits > div { display: grid; gap: 6px; align-content: start; padding-top: 12px; border-top: 2px solid var(--fg); }
+
+.note { border: 1px dashed var(--warn); padding: 14px 16px; font-size: 0.93rem; }
+.note strong { color: var(--warn); }
+
+.refs { font-size: 0.85rem; color: var(--muted); display: grid; gap: 6px; padding-left: 1.3rem; margin: 0; }
+
+@media (max-width: 560px) {
+  .trow { grid-template-columns: minmax(0, 1fr) 5.5rem; }
+  .trow .track { grid-column: 1 / -1; grid-row: 2; }
+}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <span class="eyebrow">Ternium Pesquería · MC4 → Skinpass · producción 2025</span>
+  <h1>¿Dónde nace el defecto: en el MC4 o en el Skinpass?</h1>
+  <p class="lede read">Qué encontramos al comparar directamente las dos líneas, qué dice la literatura y qué experimento le proponemos a Ternium.</p>
+  <div class="meta">
+    <span>Equipo: F. Vaquera · A. Calzada · M. J. Vital · L. D. Domínguez</span>
+    <span>Análisis: <code>notebooks/investigacion.ipynb</code></span>
+  </div>
+</header>
+
+<section>
+  <span class="eyebrow">1 · Hallazgo</span>
+  <h2>Por número domina el Skinpass; por gravedad, las dos líneas empatan</h2>
+  <p class="read">Cada defecto que registra el Skinpass trae la columna <code>Linea Origen</code>, que dice qué línea lo provocó: <span class="mc4">MC4</span> (el molino caliente lo heredó y el Skinpass solo lo detecta) o <span class="skp">Skinpass</span> (lo generó el propio Skinpass). Además ligamos el 97.1% de las piezas del Skinpass con su rollo del MC4 (<code>Material Entrada</code> = <code>Material Salida</code>).</p>
+  <div class="stats">
+    <div class="stat"><span class="v num">14,417</span><span class="l">defectos registrados en 58,786 piezas del Skinpass</span></div>
+    <div class="stat"><span class="v num"><span class="skp">80%</span> / <span class="mc4">19%</span></span><span class="l">de los defectos se generan en el Skinpass / vienen del MC4</span></div>
+    <div class="stat"><span class="v num"><span class="mc4">50%</span> / <span class="skp">49%</span></span><span class="l">de los defectos que <strong>retienen</strong> la pieza: MC4 / Skinpass</span></div>
+    <div class="stat"><span class="v num"><span class="mc4">92%</span> vs <span class="skp">22%</span></span><span class="l">de sus defectos retienen la pieza: los del MC4 son pocos, pero graves</span></div>
+  </div>
+  <figure>
+    <div class="frame"><img src="fig4_origen_defectos.png" alt="Tres paneles. A: del total de defectos 19% viene del MC4 y 80% del Skinpass, pero de los que retienen la pieza 50% es MC4 y 49% Skinpass. B: los defectos que retienen por tipo; peso y ancho vienen sobre todo del MC4, espesor, mal enrollado y elongación del Skinpass. C: de 4,415 piezas retenidas, 2,128 por MC4, 2,053 por Skinpass, 218 por ambas y 16 por otra línea."></div>
+    <figcaption>Figura 4 · <code>figuras/fig4_origen_defectos.png</code>. Unidad: pieza del Skinpass. En panel C cada pieza retenida se asigna al origen de los defectos que la retuvieron.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <span class="eyebrow">2 · Qué significa el 50/50</span>
+  <h2>Todas son piezas retenidas en el Skinpass; el 50/50 es de dónde viene su defecto</h2>
+  <p class="read">No compara retenciones del MC4 contra retenciones del Skinpass. Las 4,415 piezas (82,510 t) se retuvieron en el Skinpass, y lo que se reparte casi a la mitad es la línea que originó el defecto. Dentro de lo heredado del MC4, casi todo es peso.</p>
+  <div class="tons" role="img" aria-label="Toneladas retenidas en el Skinpass por origen del defecto">
+    <div class="trow hi"><div class="name">Retenidas en el Skinpass<small>4,415 piezas · 7.2% del tonelaje</small></div><div class="track"><div class="bar" style="width:100%;background:var(--fg)"></div></div><div class="val">82,510 t</div></div>
+    <div class="trow hi"><div class="name"><span class="mc4">Origen MC4</span><small>2,346 piezas</small></div><div class="track"><div class="bar" style="width:53.6%;background:var(--mc4)"></div></div><div class="val">44,261 t</div></div>
+    <div class="trow sub"><div class="name">Peso fuera de la orden<small>1,846 piezas</small></div><div class="track"><div class="bar" style="width:41.5%;background:var(--mc4);opacity:.75"></div></div><div class="val">34,235 t</div></div>
+    <div class="trow sub"><div class="name">Ancho fuera de tolerancia<small>446 piezas</small></div><div class="track"><div class="bar" style="width:9.9%;background:var(--mc4);opacity:.75"></div></div><div class="val">8,152 t</div></div>
+    <div class="trow hi"><div class="name"><span class="skp">Origen Skinpass</span><small>2,271 piezas</small></div><div class="track"><div class="bar" style="width:49.2%;background:var(--skp)"></div></div><div class="val">40,592 t</div></div>
+    <p class="scale">Barras a escala sobre 82,510 t. Las ramas suman algo más del 100% porque 218 piezas tienen defectos de los dos orígenes.</p>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">3 · Lo heredado del MC4</span>
+  <h2>Son dos problemas distintos, y el grande no es de laminación</h2>
+  <div class="pair">
+    <div class="case">
+      <span class="tag mc4">Ancho · 8,152 t</span>
+      <h3>Defecto físico de laminación</h3>
+      <ul>
+        <li>El MC4 ya lo había marcado en el <strong>92%</strong> de los casos: el rollo salió fuera de tolerancia y aun así siguió al Skinpass.</li>
+        <li>El Skinpass, con 1 a 2% de elongación, no puede corregir el ancho.</li>
+        <li>Es el 10% de lo retenido y el 0.7% de todo lo que pasa por el Skinpass.</li>
+      </ul>
+    </div>
+    <div class="case">
+      <span class="tag mc4">Peso · 34,235 t</span>
+      <h3>Problema de asignación de órdenes</h3>
+      <ul>
+        <li>Solo el <strong>24%</strong> estaba marcado en el MC4: entre el 70% y el 80% de esos rollos cumplían su tolerancia de peso en el MC4.</li>
+        <li>Lo que no cumplían era la ventana de peso de la orden del Skinpass. En PESO (-), el 55% de las piezas salieron de un rollo dividido.</li>
+        <li>Es el 41% de todo lo retenido: el mayor bloque del problema.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="read muted">Coincide con lo que registra la planta: 2,044 piezas retenidas tienen <code>Resolución = POR PROGRAMACION</code>. Falta verificar que sean las mismas piezas.</p>
+</section>
+
+<section>
+  <span class="eyebrow">4 · Literatura</span>
+  <h2>Qué dicen los papers y cómo complementan nuestro hallazgo</h2>
+  <p class="read">Los papers estudian una línea a la vez. Nuestra contribución es el cruce: ligar cada pieza del Skinpass con su rollo del MC4 y medir cuánto de lo que se retiene después viene de antes.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Fuente</th><th>Qué dice</th><th>Cómo nos complementa</th></tr></thead>
+      <tbody>
+        <tr><td>Ewen et al. <span class="yr">(2026)</span><br><span class="muted">Revisión de ML en molino caliente</span></td><td>Los errores geométricos del rollo caliente solo se corrigen en grado limitado en los procesos posteriores. El ancho se controla poco durante el laminado (ensanchamiento lateral) y se corrige con rodillos verticales en el desbaste.</td><td>Explica por qué los defectos de ancho del MC4 casi siempre retienen la pieza en el Skinpass. Advierte que el ancho a veces viene de modelos y no de medición.</td></tr>
+        <tr><td>Chai et al. <span class="yr">(2023)</span><br><span class="muted">Flujo transversal del metal</span></td><td>El ensanchamiento depende del ancho, del espesor de entrada y del porcentaje de reducción, con efecto no lineal. Conviene ajustar más en los castillos de arriba.</td><td>Da el mecanismo físico del ancho y justifica intervenir en el desbaste (canteo R1 y R2).</td></tr>
+        <tr><td>Ojeda-López et al. <span class="yr">(2024)</span><br><span class="muted">Simulación FEM en laminación</span></td><td>El laminado todavía se optimiza por prueba y error; la simulación permite probar programas antes de hacerlo en planta.</td><td>Justifica proponer un experimento planeado en lugar de ajustes por prueba y error.</td></tr>
+        <tr><td>Paredes y Reis <span class="yr">(2025)</span>; Vuković y Thalmann <span class="yr">(2022)</span>; Spirtes y Zhang <span class="yr">(2016)</span><br><span class="muted">Causalidad en procesos</span></td><td>La correlación en datos de proceso no prueba causa. Atribuir una causa requiere una intervención o un diseño causal explícito.</td><td><code>Linea Origen</code> es la atribución que registra la planta, no una prueba causal. Por eso el siguiente paso es un experimento con intervención.</td></tr>
+        <tr><td>Han et al. <span class="yr">(2019)</span>; Zhang et al. <span class="yr">(2020)</span>; Höfler et al. <span class="yr">(2021)</span>; Yang et al. <span class="yr">(2025)</span><br><span class="muted">Óxido y cascarilla</span></td><td>La temperatura, la reducción por castillo y el contenido de Si/Al controlan la cascarilla y el óxido rojo.</td><td>No explican el 50/50 porque el óxido casi no retiene piezas en el Skinpass, pero sí aplican a los defectos más frecuentes dentro del MC4.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">5 · Propuesta</span>
+  <h2>Pregunta detonadora</h2>
+  <div class="question">
+    <span class="badge main">Principal · peso · 34,235 t</span>
+    <p class="q">¿Cuánto bajaría la retención por peso en el Skinpass si, antes de asignar o dividir un rollo del MC4, se verificara que su peso real cabe en la ventana de peso de la orden del Skinpass?</p>
+  </div>
+  <ul class="plain read">
+    <li><strong>Es grande:</strong> ataca cuatro veces más toneladas que el ancho.</li>
+    <li><strong>Es barata:</strong> es una regla de planeación; no requiere tocar el molino ni invertir en equipo.</li>
+    <li><strong>Se puede estimar ya:</strong> simulamos la regla sobre los datos de 2025 y contamos cuántas retenciones se habrían evitado. Después se valida con un piloto en planta.</li>
+  </ul>
+  <h3>Cómo lo haríamos</h3>
+  <ol class="steps read">
+    <li>Con los datos de 2025, aplicar la regla de verificación de peso a cada rollo ligado y contar las retenciones por peso que se habrían evitado (toneladas y piezas).</li>
+    <li>Separar el efecto de los rollos divididos del de la asignación de órdenes.</li>
+    <li>Proponer a Ternium un piloto: aplicar la regla en un periodo o en un grupo de productos y comparar contra el resto.</li>
+    <li>Revisar que no aparezcan otros problemas, como órdenes sin rollo disponible o retrasos de entrega.</li>
+  </ol>
+  <div class="alt">
+    <div>
+      <span class="badge sec">Secundaria · ancho · 8,152 t</span>
+      <p>¿Si en el MC4 se ajusta el canteo del desbaste (R1 y R2) según el producto para centrar el ancho, baja la retención por ancho en el Skinpass sin aumentar otros defectos? Es el único defecto heredado que es físico. Las palancas ya están en los datos: <code>Canteo R1</code>, <code>Canteo R2</code>, <code>Ancho Entrada Real</code> y <code>Offset de Ancho Manual</code> (se usa en el 4.5% de los rollos).</p>
+    </div>
+    <div>
+      <span class="badge alt2">Alternativa · óxido rojo en el MC4</span>
+      <p>Si el objetivo es bajar los defectos más frecuentes dentro del MC4 y no lo que se retiene en el Skinpass: ¿más reducción en los castillos de adelante y menos en los de atrás reduce el óxido rojo? (Han et al., 2019).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">6 · Valor para Ternium</span>
+  <h2>Por qué le importaría a Ternium</h2>
+  <div class="benefits">
+    <div><h3>Menos toneladas detenidas</h3><p>Cada tonelada retenida implica reinspección, almacenaje, reasignación, entregas tarde o venta como material de menor calidad. La regla de peso apunta a unas 34,000 t al año.</p></div>
+    <div><h3>Sin inversión en equipo</h3><p>La propuesta principal es una regla de planeación. La secundaria solo ajusta parámetros que el MC4 ya tiene.</p></div>
+    <div><h3>No gastar Skinpass en material que ya venía mal</h3><p>El 92% de los rollos retenidos por ancho ya estaban marcados en el MC4 y aun así se procesaron. Desviarlos antes ahorra tiempo de línea y desgaste de rodillos.</p></div>
+    <div><h3>Responde su pregunta original</h3><p>Ternium preguntó si conviene diferenciar recetas del Skinpass por producto. Mostramos que la mitad de lo retenido viene antes del Skinpass: mejorar solo el Skinpass ataca como máximo la otra mitad.</p></div>
+  </div>
+  <p class="read">Para convertirlo en dinero falta un dato que solo tiene Ternium: el costo por tonelada retenida.</p>
+  <div class="formula">Ahorro anual ≈ toneladas retenidas evitadas × costo por tonelada retenida</div>
+</section>
+
+<section>
+  <span class="eyebrow">7 · Límites</span>
+  <h2>Qué no afirmamos</h2>
+  <ul class="plain read">
+    <li><code>Linea Origen</code> es la atribución que registra la planta (sistema o inspector), no una prueba causal.</li>
+    <li>Los defectos de peso, ancho y espesor son reglas automáticas contra una tolerancia (ver <code>02_calidad</code>): dicen dónde se midió fuera de rango, no el mecanismo físico.</li>
+    <li>No tenemos costos. Las cifras están en toneladas y piezas.</li>
+    <li>La coincidencia entre retenciones por peso y <code>Resolución = POR PROGRAMACION</code> falta verificarla pieza por pieza.</li>
+  </ul>
+  <p class="note read"><strong>Corrección:</strong> una versión anterior decía que el 81% de los defectos de origen MC4 no estaban registrados en el MC4. Estaba inflado porque el MC4 nombra el defecto <code>ANCHO (+/-)</code> y el Skinpass <code>ANCHO (-)</code>. Comparando por tipo de defecto, la cifra es 65%.</p>
+</section>
+
+<section>
+  <span class="eyebrow">8 · Siguientes pasos</span>
+  <h2>Qué sigue</h2>
+  <ol class="steps read">
+    <li>Simular la regla de peso en el notebook y dar la cifra de toneladas evitables.</li>
+    <li>Verificar pieza por pieza la relación entre retención por peso y <code>POR PROGRAMACION</code>.</li>
+    <li>Preguntar a Ternium: el costo por tonelada retenida, cómo se asigna un rollo a una orden del Skinpass y cuándo se decide dividirlo.</li>
+    <li>Con su respuesta, diseñar el piloto y, en paralelo, el experimento de canteo para el ancho.</li>
+  </ol>
+</section>
+
+<section>
+  <span class="eyebrow">Referencias</span>
+  <ol class="refs">
+    <li>Chai, X., Li, Y. y Shang, F. (2023). Numerical study on metal transverse flow law and model of rolled strip under variable specification in hot rolling. <i>Metals, 13</i>, 1876.</li>
+    <li>Ewen, D., Seitz, J., Siedo, H., Prinz, C. y Kuhlenkötter, B. (2026). Hot strip mill process optimization with machine learning: systematic review and methodical prediction framework based on open-source data. <i>International Journal of Material Forming, 19</i>, 69.</li>
+    <li>Han, H., Zhou, T., Wang, W., Chen, Z. y Yang, C. (2019). Effect of rolling reduction and temperature on the oxide scale of hot rolled mild steel strip. <i>Materials Research, 22</i>(5), e20190083.</li>
+    <li>Höfler, T., Linder, B., Angeli, G., Gierl-Mayer, C., Danninger, H. y Auinger, M. (2021). Internal oxidation and formation of Si/Al-enriched oxide bands in the scale of electrical steel grades. <i>Corrosion Science, 187</i>, 109502.</li>
+    <li>Ojeda-López, A., Botana-Galvín, M., González-Rovira, L. y Botana, F. J. (2024). Numerical simulation as a tool for the study, development, and optimization of rolling processes: a review. <i>Metals, 14</i>, 737.</li>
+    <li>Paredes, R. y Reis, M. S. (2025). Causality in process systems engineering: fundamentals, applications, and emerging trends. <i>Computers and Chemical Engineering, 203</i>, 109345.</li>
+    <li>Spirtes, P. y Zhang, K. (2016). Causal discovery and inference: concepts and recent methodological advances. <i>Applied Informatics, 3</i>, 3.</li>
+    <li>Vuković, M. y Thalmann, S. (2022). Causal discovery in manufacturing: a structured literature review. <i>Journal of Manufacturing and Materials Processing, 6</i>, 10.</li>
+    <li>Yang, Y., Zhang, Z., Xie, Z. y Chen, C. (2025). Experimental study on the effect of heat treatment temperature on the oxidation of 45# structural steel. <i>AIP Advances, 15</i>, 125207.</li>
+    <li>Zhang, H., Yu, L., Liu, T., Ni, H., Li, Y., Chen, Z. y Yang, Y. (2020). Optimizing the preheating temperature of hot rolled slab from the perspective of the oxidation kinetic. <i>Journal of Materials Research and Technology, 9</i>(6), 12501–12511.</li>
+  </ol>
+</section>
+
+</div>
