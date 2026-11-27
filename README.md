@@ -28,20 +28,13 @@ Ternium pregunta si conviene diferenciar recetas del Skinpass por producto. Liga
 
 ## Cómo correrlo
 
-**En Google Colab** (lo más fácil):
-1. Abre un notebook de `notebooks/` en Colab (Archivo > Abrir notebook > GitHub).
-2. Crea un token de GitHub con acceso de lectura a este repo y guárdalo en Colab: icono de llave > Secretos > `GITHUB_TOKEN`.
-3. *Entorno de ejecución > Ejecutar todas*. La primera celda clona el repo con los datos e instala lo necesario.
-
-**En tu computadora:**
 ```bash
 git clone https://github.com/DiegoLarrieta/Entregable_Reto.git
 cd Entregable_Reto
 pip install -r requirements.txt
-jupyter lab notebooks/
 ```
 
-Cada notebook tarda alrededor de un minuto en cargar los Excel.
+Abre cualquier notebook de `notebooks/` (Jupyter o VS Code con un kernel de Python local) y dale *Run All*. Los Excel ya vienen en `data/`, no hay que descargar nada. Cada notebook tarda alrededor de un minuto en cargar los datos.
 
 ## Estructura
 
