@@ -4,6 +4,8 @@
 !data/skp/*.xlsx
 *.csv
 *.parquet
+# Copia rápida de los Excel (src/ternium.py la genera y la valida sola)
+!data/cache/*.parquet
 
 # Python / Jupyter
 __pycache__/

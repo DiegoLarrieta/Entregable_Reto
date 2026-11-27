@@ -28,24 +28,63 @@ COLORES = {"azul": "#1f4e79", "naranja": "#e2470f", "gris": "#8a8f94", "rojo": "
 
 
 # ---------------------------------------------------------------- carga
-def _leer(carpeta: Path, patron: str) -> pd.DataFrame:
+# Leer los 36 Excel tarda ~40 s. La primera lectura guarda una copia en data/cache/<nombre>.parquet
+# (se lee en ~1 s). La copia se invalida sola si cambian los Excel: se compara la lista de archivos
+# con sus tamaños, que no cambia al clonar el repo (las fechas de modificación sí).
+CACHE = DATOS / "cache"
+
+
+def _archivos(carpeta: Path, patron: str) -> list:
     archivos = sorted(carpeta.glob(patron), key=lambda p: (MESES.index(p.stem.split()[1]), p.name))
     if not archivos:
         raise FileNotFoundError(f"No hay archivos {patron} en {carpeta}")
-    return pd.concat(
+    return archivos
+
+
+def _huella(archivos: list) -> str:
+    return ";".join(f"{a.name}:{a.stat().st_size}" for a in archivos)
+
+
+def _homogeneo(df: pd.DataFrame) -> pd.DataFrame:
+    """Pasa a texto las columnas que mezclan texto y números (solo topSpyOnT, un código)."""
+    for c in df.columns[df.dtypes == object]:
+        if df[c].dropna().map(type).nunique() > 1:
+            df[c] = df[c].map(lambda v: v if pd.isna(v) else str(v))
+    return df
+
+
+def _leer(carpeta: Path, patron: str, nombre: str, usar_cache: bool = True) -> pd.DataFrame:
+    archivos = _archivos(carpeta, patron)
+    cache, huella = CACHE / f"{nombre}.parquet", _huella(archivos)
+    if usar_cache and cache.exists():
+        import pyarrow.parquet as pq
+        if pq.read_schema(cache).metadata.get(b"huella", b"").decode() == huella:
+            return pd.read_parquet(cache)
+    df = pd.concat(
         [pd.read_excel(a, engine="calamine").assign(Origen_Archivo=a.name) for a in archivos],
         ignore_index=True,
     )
+    df = _homogeneo(df)
+    try:
+        import pyarrow as pa
+        import pyarrow.parquet as pq
+        tabla = pa.Table.from_pandas(df, preserve_index=False)
+        tabla = tabla.replace_schema_metadata({**(tabla.schema.metadata or {}), b"huella": huella.encode()})
+        CACHE.mkdir(exist_ok=True)
+        pq.write_table(tabla, cache, compression="zstd")
+    except Exception as e:   # sin pyarrow o sin permiso de escritura: se sigue sin caché
+        warnings.warn(f"No se pudo guardar la caché {cache.name}: {e}")
+    return df
 
 
-def cargar_mc4() -> pd.DataFrame:
+def cargar_mc4(usar_cache: bool = True) -> pd.DataFrame:
     """24 archivos quincenales del Molino Caliente 4 (149,734 rollos, 2025)."""
-    return _leer(DATOS / "mc4", "MC4_PSQ*.xlsx")
+    return _leer(DATOS / "mc4", "MC4_PSQ*.xlsx", "mc4", usar_cache)
 
 
-def cargar_skp() -> pd.DataFrame:
+def cargar_skp(usar_cache: bool = True) -> pd.DataFrame:
     """12 archivos mensuales del Skinpass (58,786 piezas, 2025)."""
-    return _leer(DATOS / "skp", "SKP_PSQ*.xlsx")
+    return _leer(DATOS / "skp", "SKP_PSQ*.xlsx", "skp", usar_cache)
 
 
 # ---------------------------------------------------------------- reglas
@@ -105,6 +144,52 @@ def unir_mc4_skp(mc4: pd.DataFrame, skp: pd.DataFrame) -> pd.DataFrame:
     return skp.merge(lado, on="Material Entrada", how="inner")
 
 
+# ---------------------------------------------------------------- diccionario de columnas
+# Cada columna se asigna al primer grupo cuya lista de fragmentos coincide con su nombre.
+# El orden importa: "Temp Enrollado Obj" es especificación, "Temp Enrollado Real" es medición.
+GRUPOS = [
+    ("Defectos (5 bloques)", [r"\(\d\)$"]),
+    ("Identificación y trazabilidad", ["^Material", "ID Salida", "Programa", "Secuencia", "Orden", "Necesidad",
+                                       "^PRO$", "PRAM", "Colada", "Cliente", "Usuario", "Nro de Carro", "Origen_Archivo",
+                                       "OFA", "Sociedad", "Rodillo de Trabajo$", "Rodillo de Trabajo Pareja$",
+                                       "Rodillo Apoyo Superior$", "Rodillo Apoyo Pareja$"]),
+    ("Tiempo", ["Fecha", "Tiempo"]),
+    ("Temperaturas medidas", ["Temp.* Real", r"Temp\. F", r"Tempe\. F", r"Temp\. Acabador"]),
+    ("Actuadores y operación", ["Canteo", "SSP", "Looper", "Offset", "Rodillo", "Enrollador", "Uso Modelo",
+                                "Uso Cubierta", "Uso Aceite", "Kelk", "Barra Transferencia", "Spy", "Preset",
+                                "Bending", "Real Prom", "Modo", "Medidor", "Fuente", "Taper Plc", r"^Ins\.", "Flejes"]),
+    ("Calidad y dictamen", ["Dictamen", "Resolución", "Calidad", "Muestre", "Inspección", "Mal Enrollado",
+                            "Superposición", "Observaciones", "Reproceso", "Empaque", "Solución", "Spring Back"]),
+    ("Entrada (planchón al MC4, rollo al Skinpass)", ["Planchón", "Entrada", "Horno", "Descarga", "DAT", "Origen Peso"]),
+    ("Especificación del pedido", ["Objetivo", "Obj", "Mínimo", "Máximo", "Min$", "Max$", "Teórico", "Teorico",
+                                   "Norma", "Grado", "Subnorma", "Calibre", "Uso General", "Forma", "Criticidad",
+                                   "Ruta", "Superficie", "Acabado", "Cara", "Posición", "Diam Interior",
+                                   "Código", "Bordes", "Estado"]),
+    ("Mediciones del rollo o pieza", ["Espesor", "Ancho", "Peso", "Largo", "Corona", "Acuñamiento", "Diam",
+                                      "Taper", "Elongación", "Reflectividad", "Dividido", "RFID", "Corte"]),
+]
+
+
+def grupo_columna(col: str) -> str:
+    """Grupo temático de una columna del MC4 o del Skinpass (ver GRUPOS)."""
+    import re
+    for grupo, fragmentos in GRUPOS:
+        if any(re.search(f, col) for f in fragmentos):
+            return grupo
+    return "Otros"
+
+
+def perfil_columnas(df: pd.DataFrame) -> pd.DataFrame:
+    """Una fila por columna: grupo, tipo, % lleno, valores distintos y un ejemplo."""
+    return pd.DataFrame({
+        "grupo": [grupo_columna(c) for c in df.columns],
+        "tipo": df.dtypes.astype(str).str.replace("64", "").str.replace("[ns]", "", regex=False).values,
+        "% lleno": (100 * df.notna().mean()).round(1).values,
+        "distintos": df.nunique().values,
+        "ejemplo": [str(df[c].dropna().iloc[0])[:30] if df[c].notna().any() else "" for c in df.columns],
+    }, index=pd.Index(df.columns, name="columna"))
+
+
 def r2_por_grupo(y: pd.Series, grupos: pd.Series) -> float:
     """Fracción de la varianza de y que explican las medias de cada grupo."""
     medias = y.groupby(grupos).transform("mean")
@@ -121,7 +206,6 @@ def estilo(tamano: int = 11):
 
 
 def guardar(fig, nombre: str):
-    """Guarda la figura en figuras/<nombre>.png y .pdf (el PDF va al LaTeX)."""
+    """Guarda la figura en figuras/<nombre>.png."""
     FIGURAS.mkdir(exist_ok=True)
-    for ext in ("png", "pdf"):
-        fig.savefig(FIGURAS / f"{nombre}.{ext}")
+    fig.savefig(FIGURAS / f"{nombre}.png")

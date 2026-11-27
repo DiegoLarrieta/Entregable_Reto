@@ -61,7 +61,7 @@ Entregable_Reto/
 │   └── 04_programa.ipynb   # Fenómeno 4: el programa de laminación (figura 3)
 ├── src/
 │   └── ternium.py    # carga de datos, reglas de limpieza y estilo de figuras: todo lo compartido
-├── figuras/          # PNG y PDF de cada figura; se regeneran al correr los notebooks
+├── figuras/          # PNG de cada figura; se regeneran al correr los notebooks
 ├── docs/             # guías de las entregas, plan de análisis, preguntas a Ternium
 └── requirements.txt
 ```
