@@ -28,6 +28,17 @@ Ternium pregunta si conviene diferenciar recetas del Skinpass por producto. Liga
 
 ## Cómo correrlo
 
+**En Colab (lo más fácil):** abre el notebook y dale *Entorno de ejecución → Ejecutar todo*. La primera celda descarga el repo con los datos e instala lo necesario; no pide token ni login.
+
+| Notebook | |
+|---|---|
+| 01 · Datos, reglas y población | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/01_datos.ipynb) |
+| 02 · Calidad | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/02_calidad.ipynb) |
+| 03 · Receta | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/03_receta.ipynb) |
+| 04 · Programa de laminación | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/04_programa.ipynb) |
+
+**En local:**
+
 ```bash
 git clone https://github.com/DiegoLarrieta/Entregable_Reto.git
 cd Entregable_Reto
