@@ -1,6 +1,6 @@
 # Propuesta: ¿dónde nace el defecto, en el MC4 o en el Skinpass?
 
-Abre [`propuesta.html`](propuesta.html) en el navegador para ver la propuesta completa (descárgala o clona el repo; GitHub no renderiza HTML). El análisis está en [`notebooks/investigacion.ipynb`](../notebooks/investigacion.ipynb).
+Abre [`propuesta.html`](propuesta.html) en el navegador para ver la propuesta completa (descárgala o clona el repo; GitHub no renderiza HTML). El análisis está en [`notebooks/antecedentes/investigacion.ipynb`](../notebooks/antecedentes/investigacion.ipynb).
 
 El catálogo de columnas con dato está en [`variables.html`](variables.html): qué variables de los Excel de MC4 y Skinpass se pueden usar, y cuáles vienen vacías.
 

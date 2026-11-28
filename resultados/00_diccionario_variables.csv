@@ -1,0 +1,96 @@
+nombre_propuesta,tabla,columna_real,existe,nombre_distinto,bloque,rol,cobertura_%,distintos,tipo
+Material Salida MC4,MC4,Material Salida,True,True,Llave y tiempo,llave,100.0,149734,object
+Material Entrada SKP,SKP,Material Entrada,True,True,Llave y tiempo,llave,100.0,49557,object
+Fecha Inicio / Fin MC4,MC4,Fecha Fin,True,True,Llave y tiempo,derivar,100.0,149734,datetime64[ns]
+Fecha Inicio / Fin SKP,SKP,Fecha Inicio,True,True,Llave y tiempo,derivar,100.0,58786,datetime64[ns]
+Fuerza Real Prom. [kN],SKP,Fuerza Real Prom.  [kN],True,True,Respuesta A · esfuerzo SKP,respuesta,99.89,28499,float64
+Preset Fuerza [kN],SKP,Preset Fuerza [kN],True,False,Respuesta A · esfuerzo SKP,respuesta,99.89,27609,float64
+Bending Prom. Real [kN],SKP,Bending Prom. Real [kN],True,False,Respuesta A · esfuerzo SKP,respuesta,99.89,1061,float64
+Preset Bending,SKP,Preset Bending,True,False,Respuesta A · esfuerzo SKP,respuesta,99.89,297,float64
+Back Tensión Real Prom. [kN],SKP,Back Tensión Real Prom. [kN],True,False,Respuesta A · esfuerzo SKP,respuesta,99.89,1620,float64
+Front Tensión Real Prom. [kN],SKP,Front Tensión Real Prom. [kN],True,False,Respuesta A · esfuerzo SKP,respuesta,99.89,3111,float64
+Back Preset Tensión [kN],SKP,Back Preset Tensión [kN],True,False,Respuesta A · esfuerzo SKP,respuesta,99.89,1616,float64
+Front Preset Tensión [kN],SKP,Front Preset Tensión [kN],True,False,Respuesta A · esfuerzo SKP,respuesta,99.89,3045,float64
+Elongación,SKP,Elongación,True,False,Respuesta A · esfuerzo SKP,respuesta / mediador,91.09,51223,float64
+Dictamen,SKP,Dictamen,True,False,Respuesta B · calidad SKP,respuesta,100.0,3,object
+Resolución,SKP,Resolución,True,False,Respuesta B · calidad SKP,definir etiqueta (prohibida como predictor),100.0,8,object
+Defecto (1),SKP,Defecto (1),True,True,Respuesta B · calidad SKP,definir etiqueta,21.81,46,object
+Linea Origen (1),SKP,Linea Origen (1),True,True,Respuesta B · calidad SKP,estratificar etiqueta,21.81,10,object
+Causa (1),SKP,Causa (1),True,True,Respuesta B · calidad SKP,prohibida,21.81,88,object
+Codigo defecto (1),SKP,Codigo defecto (1),True,True,Respuesta B · calidad SKP,definir etiqueta,21.81,45,float64
+Corona Salida,MC4,Corona Salida,True,False,MC4 · geometría,predictor,97.65,57205,float64
+Acuñamiento Salida,MC4,Acuñamiento Salida,True,False,MC4 · geometría,predictor,97.65,61807,float64
+Spring Back Salida,MC4,Spring Back Salida,True,False,MC4 · geometría,predictor,100.0,2,object
+Ancho,MC4,Ancho,True,False,MC4 · geometría,predictor,100.0,63568,float64
+Ancho Objetivo,MC4,Ancho Objetivo,True,False,MC4 · geometría,derivar (error),100.0,2083,float64
+Ancho Mínimo,MC4,Ancho Mínimo,True,False,MC4 · geometría,derivar (tolerancia),100.0,2070,float64
+Ancho Máximo,MC4,Ancho Máximo,True,False,MC4 · geometría,derivar (tolerancia),100.0,2195,float64
+Espesor Final,MC4,Espesor Final,True,False,MC4 · geometría,predictor,100.0,2417,float64
+Espesor Objetivo,MC4,Espesor Objetivo,True,False,MC4 · geometría,derivar (error),100.0,1317,float64
+Taper Medido,MC4,Taper Medido,True,False,MC4 · geometría,predictor,96.82,302,float64
+Taper Teórico,MC4,Taper Teórico,True,False,MC4 · geometría,derivar (ΔTaper),96.82,1,float64
+Canteo R1,MC4,Canteo R1,True,False,MC4 · geometría,predictor (palanca),99.74,47451,float64
+Canteo R2,MC4,Canteo R2,True,False,MC4 · geometría,predictor (palanca),99.74,60060,float64
+Canteo SSP,MC4,Canteo SSP,True,False,MC4 · geometría,predictor,99.75,92888,float64
+Offset de Ancho Manual,MC4,Offset de Ancho Manual ,True,True,MC4 · geometría,predictor (palanca),99.71,49,float64
+Temp Acabado Real,MC4,Temp Acabado Real,True,False,MC4 · térmica,predictor,100.0,10872,float64
+Temp Acabado Obj,MC4,Temp Acabado Obj,True,False,MC4 · térmica,derivar (ΔT),95.99,8,float64
+Temp Enrollado Real,MC4,Temp Enrollado Real,True,False,MC4 · térmica,predictor,100.0,76479,float64
+Temp Enrollado Obj,MC4,Temp Enrollado Obj,True,False,MC4 · térmica,derivar (ΔT),96.03,21,float64
+Temp. F1,MC4,Temp. F1,True,False,MC4 · térmica,derivar (caída F1→F7),99.66,87111,float64
+Temp. F7,MC4,Temp. F7,True,False,MC4 · térmica,derivar (caída F1→F7),99.66,129664,float64
+Tempe. F5,MC4,Tempe. F5,True,False,MC4 · térmica,predictor,99.66,128404,float64
+Temp. Acabador Sup. A,MC4,Temp. Acabador Sup. A,True,False,MC4 · térmica,derivar (asimetría),99.24,194,float64
+Temp. Acabador Sup. B,MC4,Temp. Acabador Sup. B,True,False,MC4 · térmica,derivar (asimetría),99.33,189,float64
+Temperatura Descarga Salida,MC4,Temperatura Descarga Salida,True,False,MC4 · térmica,predictor,99.97,147,float64
+Tiempo Estancia,MC4,Tiempo Estancia,True,False,MC4 · térmica,predictor,99.97,1447,float64
+Tiempo Entre Salida R2 y Entrada F1,MC4,Tiempo Entre Salida R2 y Entrada F1,True,False,MC4 · térmica,predictor,99.98,137,float64
+% Uso Cubierta Térmica,MC4,% Uso Cubierta Térmica,True,False,MC4 · térmica,predictor,99.75,214,float64
+topSpyOn/botSpyOn H/M/T,MC4,topSpyOnH,True,True,MC4 · térmica,código (no numérico),99.72,166,float64
+Tensión de Looper 1-6,MC4,Tensión de Looper 1 [Mpa],True,True,MC4 · térmica,derivar (media/máx),95.41,857,float64
+Uso Aceite Rolado,MC4,Uso Aceite Rolado,True,False,MC4 · térmica,predictor,99.61,1,float64
+Horno,MC4,Horno,True,False,MC4 · térmica,predictor,100.0,2,float64
+Enrollador,MC4,Enrollador,True,False,MC4 · térmica,predictor,99.97,2,float64
+Cambio Rodillo Trabajo,MC4,Cambio Rodillo Trabajo,True,False,MC4 · térmica,excluida (no confiable),100.0,2,object
+Rodillo de Trabajo,SKP,Rodillo de Trabajo,True,False,SKP · rodillos y operación,agrupación / derivar desgaste,100.0,35,object
+Rodillo de Trabajo Pareja,SKP,Rodillo de Trabajo Pareja,True,False,SKP · rodillos y operación,agrupación,97.95,35,object
+Rodillo de Trabajo Corona Entrada,SKP,Rodillo de Trabajo Corona Entrada,True,False,SKP · rodillos y operación,predictor,100.0,63,float64
+Pareja Corona,SKP,Rodillo de Trabajo Pareja Corona,True,True,SKP · rodillos y operación,predictor,97.95,63,float64
+Rodillo de Trabajo Diám. Entrada,SKP,Rodillo de Trabajo Diám. Entrada,True,False,SKP · rodillos y operación,predictor,100.0,376,float64
+Pareja Diám.,SKP,Rodillo de Trabajo Pareja Diám. entrada,True,True,SKP · rodillos y operación,predictor,97.95,360,float64
+Rodillo Apoyo Superior Diám.,SKP,Rodillo Apoyo Superior Diám.,True,False,SKP · rodillos y operación,predictor,100.0,9,float64
+Rodillo Apoyo Inferior Diám.,SKP,Rodillo Apoyo Inferior Diám.,True,False,SKP · rodillos y operación,predictor,100.0,22,float64
+Modo / Modo Molino,SKP,Modo Molino,True,True,SKP · rodillos y operación,filtro de población,100.0,2,object
+Medidor de Espesor,SKP,Medidor de Espesor,True,False,SKP · rodillos y operación,predictor,100.0,2,object
+Riesgo de Spring Back,SKP,Riesgo de Spring Back,True,False,SKP · rodillos y operación,predictor,100.0,2,object
+Usuario,SKP,Usuario,True,False,SKP · rodillos y operación,predictor,100.0,17,object
+Grado Salida,SKP,Grado Salida,True,False,Controles,control,100.0,114,object
+Grado,SKP,Grado,True,False,Controles,alternativa a Grado Salida,95.24,328,object
+Grado Planchón,MC4,Grado Planchón,True,False,Controles,control,100.0,164,object
+Norma,SKP,Norma,True,False,Controles,control,100.0,41,object
+PRAM,SKP,PRAM,True,False,Controles,control,100.0,138,object
+Programa (SKP),SKP,Programa,True,False,Controles,agrupación,100.0,883,object
+Programa (MC4),MC4,Programa,True,False,Controles,agrupación,100.0,1834,float64
+Dividido,SKP,Dividido,True,False,Controles,control,100.0,2,object
+Es Reproceso,SKP,Es Reproceso,True,False,Controles,control,100.0,2,int64
+Espesor Entrada,SKP,Espesor Entrada,True,False,Controles,control,100.0,3261,float64
+Ancho Entrada,SKP,Ancho Entrada,True,False,Controles,control,100.0,31742,float64
+Peso Entrada,SKP,Peso Entrada,True,False,Controles,control,100.0,2460,int64
+Peso Mínimo,SKP,Peso Mínimo,True,False,Controles,derivar (holgura),100.0,785,int64
+Peso Máximo,SKP,Peso Máximo,True,False,Controles,derivar (holgura),100.0,1330,int64
+Colada,MC4,Colada,True,False,Controles,agrupación,100.0,21505,object
+Secuencia,MC4,Secuencia,True,False,Controles,control,100.0,118,float64
+Peso Báscula (intervención A),MC4,Peso Báscula,True,False,Controles,excluida (0 en la mayoría),99.73,2665,float64
+Peso (MC4),MC4,Peso,True,False,Controles,usar en lugar de Peso Báscula,100.0,2285,int64
+Calidad Sugerida,SKP,Calidad Sugerida,True,False,Fuga de información,prohibida,7.51,4,object
+Observaciones Calidad,SKP,Observaciones Calidad,True,False,Fuga de información,prohibida,24.96,5944,object
+Muestreado,SKP,Muestreado,True,False,Fuga de información,prohibida,100.0,2,object
+Empaque Cumple,SKP,Empaque Cumple,True,False,Fuga de información,prohibida,100.0,1,object
+Siguiente Accion/Proceso,MC4,Proceso Siguiente,True,True,Fuga de información,prohibida,0.0,0,float64
+Forma Final,SKP,Forma Final,True,False,Sin datos,excluida,0.0,0,float64
+Código Forma,SKP,Código Forma,True,False,Sin datos,excluida,0.0,0,float64
+Reflectividad,SKP,Reflectividad,True,False,Sin datos,excluida,0.0,0,float64
+Acabado Superficial,SKP,Acabado Superficial,True,False,Sin datos,excluida,0.01,2,object
+Temp. Acabador Inf.,MC4,Temp. Acabador Inf.,True,False,Sin datos,excluida,0.0,3,float64
+Ancho Cuerpo,SKP,Ancho Cuerpo,True,False,Sin datos,excluida,10.19,835,float64
+Subnorma,SKP,Subnorma,True,False,Sin datos,excluida,25.04,102,object

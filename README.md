@@ -30,12 +30,22 @@ Ternium pregunta si conviene diferenciar recetas del Skinpass por producto. Liga
 
 **En Colab (lo más fácil):** abre el notebook y dale *Entorno de ejecución → Ejecutar todo*. La primera celda descarga el repo con los datos e instala lo necesario; no pide token ni login.
 
+**Investigación MC4–Skinpass** (propuesta de validación metodológica):
+
 | Notebook | |
 |---|---|
-| 01 · Datos, reglas y población | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/01_datos.ipynb) |
-| 02 · Calidad | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/02_calidad.ipynb) |
-| 03 · Receta | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/03_receta.ipynb) |
-| 04 · Programa de laminación | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/04_programa.ipynb) |
+| 00 · Auditoría de datos y definiciones | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/00_Auditoria_Datos.ipynb) |
+| 01 · Exploración por bloques (EDA) | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/01_EDA_MC4_Skinpass.ipynb) |
+| 02 · Correlaciones dentro de producto y PCA | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/02_Correlaciones_y_PCA.ipynb) |
+
+**Antecedentes** (Entrega 1):
+
+| Notebook | |
+|---|---|
+| 01 · Datos, reglas y población | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/antecedentes/01_datos.ipynb) |
+| 02 · Calidad | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/antecedentes/02_calidad.ipynb) |
+| 03 · Receta | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/antecedentes/03_receta.ipynb) |
+| 04 · Programa de laminación | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/antecedentes/04_programa.ipynb) |
 
 **En local:**
 
@@ -45,7 +55,7 @@ cd Entregable_Reto
 pip install -r requirements.txt
 ```
 
-Abre cualquier notebook de `notebooks/` (Jupyter o VS Code con un kernel de Python local) y dale *Run All*. Los Excel ya vienen en `data/`, no hay que descargar nada. Cada notebook tarda alrededor de un minuto en cargar los datos.
+Abre cualquier notebook de `notebooks/` o `notebooks/antecedentes/` (Jupyter o VS Code con un kernel de Python local) y dale *Run All*. Los Excel ya vienen en `data/`, no hay que descargar nada. Cada notebook tarda alrededor de un minuto en cargar los datos.
 
 ## Estructura
 
@@ -55,10 +65,13 @@ Entregable_Reto/
 │   ├── mc4/          # 24 Excel quincenales del Molino Caliente 4 (149,734 rollos)
 │   └── skp/          # 12 Excel mensuales del Skinpass (58,786 piezas)
 ├── notebooks/
-│   ├── 01_datos.ipynb      # carga, auditoría, reglas de limpieza, población, liga MC4 → Skinpass
-│   ├── 02_calidad.ipynb    # Fenómeno 1: qué significa "calidad" (figura 1)
-│   ├── 03_receta.ipynb     # Fenómeno 2: de dónde sale la receta (figura 2)
-│   └── 04_programa.ipynb   # Fenómeno 4: el programa de laminación (figura 3)
+│   ├── 00_… 08_…           # investigación MC4–Skinpass (propuesta de validación metodológica), en construcción
+│   └── antecedentes/       # trabajo previo (Entrega 1), se conserva tal cual
+│       ├── 01_datos.ipynb      # carga, auditoría, reglas de limpieza, población, liga MC4 → Skinpass
+│       ├── 02_calidad.ipynb    # Fenómeno 1: qué significa "calidad" (figura 1)
+│       ├── 03_receta.ipynb     # Fenómeno 2: de dónde sale la receta (figura 2)
+│       ├── 04_programa.ipynb   # Fenómeno 4: el programa de laminación (figura 3)
+│       └── investigacion.ipynb # ¿el defecto nace en el MC4 o en el Skinpass?
 ├── src/
 │   └── ternium.py    # carga de datos, reglas de limpieza y estilo de figuras: todo lo compartido
 ├── figuras/          # PNG de cada figura; se regeneran al correr los notebooks

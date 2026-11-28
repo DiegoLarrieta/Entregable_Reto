@@ -1,0 +1,15 @@
+cifra,propuesta,real,coincide
+Rollos MC4,149734.0,149734,sí
+Variables MC4,280.0,280,sí
+Piezas SKP,58786.0,58786,sí
+Variables SKP,208.0,208,sí
+Piezas SKP con al menos un defecto,12823.0,12823,sí
+Piezas retenidas SKP,4415.0,4415,sí
+Toneladas retenidas SKP,82510.0,82510,sí
+"Piezas retenidas por PESO, origen MC4",1846.0,1846,sí
+"Toneladas retenidas por PESO, origen MC4",34235.0,34235,sí
+"Toneladas retenidas por ANCHO, origen MC4",8152.0,8152,sí
+Fuerza real y preset con dato,58719.0,58719,sí
+Preset de fuerza con dato útil (≠ 0),,54174,—
+Preset de bending con dato útil (≠ 0),,51780,—
+Elongación con dato,53550.0,53550,sí

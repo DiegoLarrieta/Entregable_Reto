@@ -1,0 +1,81 @@
+respuesta,predictor,bloque,spearman,ic_bajo,ic_alto,pearson,n,excluye_0
+ΔBending,Corona (µm),MC4 geometría,-0.036,-0.049,-0.022,-0.015,46397,True
+ΔBending,Corona relativa (%),MC4 geometría,-0.021,-0.034,-0.009,-0.013,46397,True
+ΔBending,Acuñamiento (µm),MC4 geometría,0.01,-0.008,0.025,0.02,47148,False
+ΔBending,Taper medido,MC4 geometría,0.016,0.006,0.029,-0.003,46675,True
+ΔBending,Error espesor (µm),MC4 geometría,-0.006,-0.018,0.007,0.004,48296,False
+ΔBending,Error ancho (mm),MC4 geometría,-0.004,-0.017,0.009,0.007,48296,False
+ΔBending,Canteo R1,MC4 geometría,0.009,-0.003,0.022,-0.004,48165,False
+ΔBending,Offset ancho manual,MC4 geometría,-0.036,-0.047,-0.023,-0.003,48142,True
+ΔBending,Error T enrollado (°C),MC4 térmica,-0.011,-0.025,-0.001,0.005,48296,True
+ΔBending,Error T acabado (°C),MC4 térmica,-0.0,-0.012,0.012,0.007,48296,False
+ΔBending,Caída F1→F7 (°C),MC4 térmica,-0.007,-0.019,0.006,-0.026,48137,False
+ΔBending,Asimetría acabador (°C),MC4 térmica,0.009,-0.007,0.023,0.021,47883,False
+ΔBending,Looper media (MPa),MC4 térmica,0.003,-0.01,0.016,0.006,48172,False
+ΔBending,Días MC4 → SKP,MC4 térmica,0.052,0.038,0.068,0.026,48296,True
+ΔBending,Diámetro rodillo (mm),SKP rodillos,-0.005,-0.021,0.014,-0.012,48296,False
+ΔBending,Dif. diám. pareja (mm),SKP rodillos,-0.04,-0.058,-0.024,-0.009,47225,True
+ΔBending,Corona rodillo,SKP rodillos,0.002,-0.02,0.019,0.023,48296,False
+ΔBending,Diámetro apoyo sup. (mm),SKP rodillos,0.015,-0.004,0.036,-0.007,48296,False
+ΔBending,Pieza en campaña,SKP rodillos,0.023,0.007,0.037,-0.006,48296,True
+ΔBending,Toneladas en campaña,SKP rodillos,0.023,0.007,0.037,-0.009,48296,True
+ΔFuerza,Corona (µm),MC4 geometría,-0.01,-0.03,0.012,0.059,46397,False
+ΔFuerza,Corona relativa (%),MC4 geometría,0.039,0.021,0.061,0.078,46397,True
+ΔFuerza,Acuñamiento (µm),MC4 geometría,0.005,-0.013,0.023,0.006,47148,False
+ΔFuerza,Taper medido,MC4 geometría,-0.006,-0.016,0.007,0.009,46675,False
+ΔFuerza,Error espesor (µm),MC4 geometría,-0.048,-0.061,-0.031,0.021,48296,True
+ΔFuerza,Error ancho (mm),MC4 geometría,-0.07,-0.085,-0.052,-0.064,48296,True
+ΔFuerza,Canteo R1,MC4 geometría,0.063,0.048,0.084,-0.004,48165,True
+ΔFuerza,Offset ancho manual,MC4 geometría,0.006,-0.012,0.027,0.007,48142,False
+ΔFuerza,Error T enrollado (°C),MC4 térmica,-0.063,-0.079,-0.05,-0.014,48296,True
+ΔFuerza,Error T acabado (°C),MC4 térmica,-0.009,-0.024,0.006,0.002,48296,False
+ΔFuerza,Caída F1→F7 (°C),MC4 térmica,0.04,0.025,0.057,0.03,48137,True
+ΔFuerza,Asimetría acabador (°C),MC4 térmica,-0.004,-0.02,0.017,0.005,47883,False
+ΔFuerza,Looper media (MPa),MC4 térmica,0.029,0.008,0.049,0.035,48172,True
+ΔFuerza,Días MC4 → SKP,MC4 térmica,0.228,0.211,0.245,0.095,48296,True
+ΔFuerza,Diámetro rodillo (mm),SKP rodillos,0.064,0.043,0.089,0.054,48296,True
+ΔFuerza,Dif. diám. pareja (mm),SKP rodillos,0.011,-0.013,0.031,-0.015,47225,False
+ΔFuerza,Corona rodillo,SKP rodillos,0.042,0.023,0.062,0.039,48296,True
+ΔFuerza,Diámetro apoyo sup. (mm),SKP rodillos,-0.017,-0.042,0.005,-0.0,48296,False
+ΔFuerza,Pieza en campaña,SKP rodillos,0.185,0.168,0.201,0.095,48296,True
+ΔFuerza,Toneladas en campaña,SKP rodillos,0.184,0.165,0.2,0.095,48296,True
+Bending real,Corona (µm),MC4 geometría,0.002,-0.016,0.021,0.007,46397,False
+Bending real,Corona relativa (%),MC4 geometría,-0.004,-0.021,0.013,0.006,46397,False
+Bending real,Acuñamiento (µm),MC4 geometría,-0.019,-0.041,-0.002,-0.013,47148,True
+Bending real,Taper medido,MC4 geometría,0.007,-0.006,0.02,-0.003,46675,False
+Bending real,Error espesor (µm),MC4 geometría,0.071,0.054,0.086,0.015,48296,True
+Bending real,Error ancho (mm),MC4 geometría,0.052,0.035,0.069,0.047,48296,True
+Bending real,Canteo R1,MC4 geometría,-0.063,-0.079,-0.045,-0.031,48165,True
+Bending real,Offset ancho manual,MC4 geometría,0.001,-0.015,0.018,0.001,48142,False
+Bending real,Error T enrollado (°C),MC4 térmica,0.015,-0.0,0.028,-0.014,48296,False
+Bending real,Error T acabado (°C),MC4 térmica,-0.021,-0.039,-0.006,-0.016,48296,True
+Bending real,Caída F1→F7 (°C),MC4 térmica,-0.032,-0.054,-0.016,-0.027,48137,True
+Bending real,Asimetría acabador (°C),MC4 térmica,0.079,0.056,0.1,0.077,47883,True
+Bending real,Looper media (MPa),MC4 térmica,-0.013,-0.028,0.003,-0.021,48172,False
+Bending real,Días MC4 → SKP,MC4 térmica,0.099,0.077,0.121,0.054,48296,True
+Bending real,Diámetro rodillo (mm),SKP rodillos,-0.017,-0.045,0.009,-0.013,48296,False
+Bending real,Dif. diám. pareja (mm),SKP rodillos,-0.028,-0.049,-0.005,-0.011,47225,True
+Bending real,Corona rodillo,SKP rodillos,-0.107,-0.136,-0.086,-0.102,48296,True
+Bending real,Diámetro apoyo sup. (mm),SKP rodillos,0.063,0.042,0.084,0.103,48296,True
+Bending real,Pieza en campaña,SKP rodillos,-0.278,-0.3,-0.26,-0.205,48296,True
+Bending real,Toneladas en campaña,SKP rodillos,-0.271,-0.292,-0.252,-0.193,48296,True
+Fuerza real,Corona (µm),MC4 geometría,0.177,0.152,0.194,0.182,46397,True
+Fuerza real,Corona relativa (%),MC4 geometría,0.193,0.171,0.212,0.175,46397,True
+Fuerza real,Acuñamiento (µm),MC4 geometría,0.078,0.055,0.105,0.143,47148,True
+Fuerza real,Taper medido,MC4 geometría,0.005,-0.008,0.02,0.004,46675,False
+Fuerza real,Error espesor (µm),MC4 geometría,0.204,0.189,0.222,0.028,48296,True
+Fuerza real,Error ancho (mm),MC4 geometría,0.129,0.113,0.145,0.112,48296,True
+Fuerza real,Canteo R1,MC4 geometría,-0.114,-0.135,-0.095,-0.075,48165,True
+Fuerza real,Offset ancho manual,MC4 geometría,0.011,-0.014,0.034,-0.006,48142,False
+Fuerza real,Error T enrollado (°C),MC4 térmica,-0.005,-0.018,0.009,-0.012,48296,False
+Fuerza real,Error T acabado (°C),MC4 térmica,-0.099,-0.116,-0.079,-0.027,48296,True
+Fuerza real,Caída F1→F7 (°C),MC4 térmica,-0.115,-0.135,-0.099,-0.12,48137,True
+Fuerza real,Asimetría acabador (°C),MC4 térmica,0.016,-0.009,0.035,0.01,47883,False
+Fuerza real,Looper media (MPa),MC4 térmica,-0.004,-0.025,0.016,0.028,48172,False
+Fuerza real,Días MC4 → SKP,MC4 térmica,0.098,0.078,0.125,0.059,48296,True
+Fuerza real,Diámetro rodillo (mm),SKP rodillos,0.044,0.024,0.069,0.049,48296,True
+Fuerza real,Dif. diám. pareja (mm),SKP rodillos,0.008,-0.017,0.026,0.011,47225,False
+Fuerza real,Corona rodillo,SKP rodillos,0.042,0.024,0.061,0.036,48296,True
+Fuerza real,Diámetro apoyo sup. (mm),SKP rodillos,0.021,-0.006,0.044,0.038,48296,False
+Fuerza real,Pieza en campaña,SKP rodillos,-0.386,-0.404,-0.369,-0.306,48296,True
+Fuerza real,Toneladas en campaña,SKP rodillos,-0.376,-0.394,-0.358,-0.291,48296,True

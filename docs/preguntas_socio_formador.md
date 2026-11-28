@@ -1,11 +1,28 @@
-# Preguntas para Ternium (anexo del artículo)
+# Preguntas abiertas sobre el proceso (anexo del artículo)
 
-Anoten cada pregunta, quién la hizo, fecha y respuesta.
+**Supuesto de partida:** no esperamos respuesta de Ternium. Los datos de 2025 son los que hay. Por eso cada pregunta lleva:
 
-| # | Pregunta | Fecha | Respuesta |
-|---|---|---|---|
-| 1 | ¿Qué evento marca realmente "Cambio Rodillo Trabajo"? (vale "Cambio" en 77% de los rollos) | | |
-| 2 | ¿Cómo se elige el preset de bending en el Skinpass? ¿Tabla, modelo u operador? | | |
-| 3 | ¿Por qué la fuerza real queda ~18% debajo del preset? | | |
-| 4 | ¿Existe registro de planeza medida (I-units) por rollo a la salida del Skinpass? | | |
-| 5 | ¿Hay registro de fechas de cambio de receta por producto? | | |
+- **Lo que dicen los datos:** evidencia que ya extrajimos y que acota la respuesta.
+- **Supuesto de trabajo:** la decisión que tomamos para no frenar el análisis. Se declara en el artículo como supuesto.
+- **Riesgo si el supuesto es falso:** qué conclusión cambiaría. Sirve para el análisis de sensibilidad.
+
+Si alguna vez llega una respuesta, se anota con fecha y se revisa el supuesto.
+
+Estado: 🟢 resuelto con datos · 🟡 acotado con datos, queda supuesto · 🔴 sin dato, limitación.
+
+| # | Pregunta | Estado | Lo que dicen los datos | Supuesto de trabajo | Riesgo si es falso |
+|---|---|---|---|---|---|
+| 1 | ¿Qué evento marca realmente `Cambio Rodillo Trabajo` (MC4)? | 🔴 | Vale "Cambio" en 77% de los rollos, incluso después del rollo 10 del programa (`antecedentes/04_programa`) | No se usa. El desgaste del Skinpass se mide con las campañas reconstruidas por ID de rodillo y fecha; el del MC4 no se modela | Ninguno para la tesis: no depende de esta columna |
+| 2 | ¿Cómo se elige el preset de bending del Skinpass: tabla, modelo u operador? | 🟡 | 265 valores distintos y redondos (100, 50, −100, 200, …): huele a **tabla por producto/espesor** con ajustes. Ningún PRAM, grado, rodillo ni usuario tiene siempre el mismo valor | El preset es una consigna de setup (tabla o modelo) fijada **antes** de procesar la pieza; por eso es legítimo usarlo como referencia de Δ | Si el operador lo corrige durante el proceso, Δ Bending subestima la corrección real |
+| 3 | ¿Por qué la fuerza real queda ~18% debajo del preset? | 🟡 | En modo Elongación, real/preset = 0.82 (mediana); corr. preset–real = 0.57. El sesgo es sistemático, no ruido | El preset de fuerza es una **predicción** del modelo de setup; en modo Elongación el lazo controla la elongación y la fuerza resulta. Δ Fuerza = error del modelo de setup para esa pieza | Si el preset se calibra a propósito por encima (margen de seguridad), el nivel de Δ no se interpreta, pero su **variación** entre piezas sí. Se modela Δ dentro de producto, no su nivel absoluto |
+| 4 | ¿Existe planeza medida (I-units) por pieza a la salida del Skinpass? | 🔴 | `Forma Final`, `Código Forma`, `Reflectividad` e `Intensidad (1-5)` tienen 0 registros | El objetivo del bending (planeza) no es observable; se usan como proxy los defectos de forma registrados por inspector (ONDULACIÓN, FUERA DE PLANEZA, TABLEADO) | No podemos afirmar que un Δ Bending grande produzca peor planeza; solo que se asocia con defectos de forma registrados |
+| 5 | ¿Hay registro de fechas de cambio de receta por producto? | 🟡 | El PRAM fija la consigna de enrollado al 100% y no cambia en el año (`antecedentes/03_receta`) | No hubo cambios de receta en 2025 que sirvan como experimento natural | Si los hubo dentro de un PRAM, perdemos un contraste útil, pero no se sesga nada |
+| 6 | ¿Qué significa un preset de bending igual a 0? | 🟢 | En modo Elongación, 5,823 piezas tienen preset 0. **Es un valor válido, no un faltante:** el bending es una fuerza con signo (de −420 a +2,000 kN; 41% de los reales son negativos), el 0 está rodeado de valores frecuentes (±50, ±100), con preset 0 el real **no** es 0 (mediana −47 kN) y es más común en lámina delgada (50% bajo 1.5 mm contra 6% en 6–8 mm). No se concentra en ningún PRAM, rodillo ni usuario | Preset de bending 0 = **consigna neutra**. Se conserva y Δ Bending se calcula normal | Bajo: si fuera faltante, el real sería ~0 o no habría patrón por espesor |
+| 7 | ¿Qué significa un preset de fuerza igual a 0? | 🟢 | 4,510 de las 5,526 piezas en modo Fuerza (RCO) tienen preset 0; en modo Elongación solo 35 | En modo Fuerza no hay preset comparable. El Problema A se limita al **modo Elongación** (53,260 piezas) | Ninguno: es una restricción de población, declarada |
+| 8 | ¿Qué criterio separa una retención "POR PROGRAMACION" de una "CALIDAD DE PLANTA" cuando el defecto es PESO? | 🟡 | De las retenciones por PESO: 1,787 por programación, 783 calidad de planta, 18 otras. Se puede describir qué distingue a cada grupo (exceso de peso, Dividido, origen) | Se calcularán tres definiciones de "administrativa" (por `Resolución`, por defecto PESO, por la intersección) y se elegirá en el Notebook 00 con criterio explícito. Las otras dos se reportan como sensibilidad | Si el criterio de la planta es otro, la frontera física/administrativa se mueve unas cientos de piezas; el análisis de sensibilidad dirá si cambia la conclusión |
+| 9 | ¿Cuándo y quién decide dividir un rollo? | 🟢 | Rollos cuyo `Peso Entrada` cabe en el peso máximo de la orden: 99.6% NO se dividen. Rollos que lo exceden: 79.8% SÍ se dividen. La suma de pesos de las piezas es el 99.3% del peso de entrada | `Dividido` es una **decisión de planeación determinada por el peso del rollo frente a la orden SKP**, tomada antes de procesar. Es válida como control | Bajo. Hallazgo extra: **2,110 rollos excedían el peso máximo y no se dividieron**, candidatos naturales a PESO(+), directamente ligados a la intervención A |
+| 10 | ¿Qué representa cada `Programa` (MC4 y SKP)? | 🟢 | Son dos calendarios distintos y cruzados: un Programa SKP (~74 piezas, ~10.5 h, en un solo bloque continuo, dentro de una sola campaña de rodillo) mezcla ~12 Programas MC4 | Programa MC4 agrupa la herencia del molino caliente; Programa SKP agrupa las condiciones del Skinpass. Se usan como efectos aleatorios **cruzados** | Bajo |
+| 11 | ¿Hay datos de velocidad del molino o rugosidad de rodillos del Skinpass? | 🔴 | No existen columnas con esa información | La rugosidad se aproxima con tonelaje y piezas acumuladas por campaña de rodillo y con `Diám. Entrada` (rectificado) | El desgaste estimado mezcla rugosidad, temperatura del rodillo y producto; se interpreta como "vida del rodillo", no como rugosidad |
+
+## Registro de cambios
+- 2026-11-27: se reestructura el anexo. Se asume que no habrá respuestas y se agregan las preguntas 6 a 11 con la evidencia de los datos.

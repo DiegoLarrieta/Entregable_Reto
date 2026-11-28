@@ -3,6 +3,8 @@
 !data/mc4/*.xlsx
 !data/skp/*.xlsx
 *.csv
+# Resultados de los notebooks (tablas pequeñas que citan los notebooks y la página)
+!resultados/*.csv
 *.parquet
 # Copia rápida de los Excel (src/ternium.py la genera y la valida sola)
 !data/cache/*.parquet

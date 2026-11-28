@@ -1,6 +1,6 @@
 """Funciones compartidas por los notebooks del proyecto Ternium MC4 → Skinpass.
 
-Uso desde un notebook en notebooks/:
+Uso desde un notebook en notebooks/ (o una subcarpeta, p. ej. notebooks/antecedentes/):
     import sys; sys.path.append('..')
     from src.ternium import *
 """
@@ -145,6 +145,97 @@ def unir_mc4_skp(mc4: pd.DataFrame, skp: pd.DataFrame) -> pd.DataFrame:
     lado = mc4.rename(columns={c: f"{c} MC4" for c in mc4.columns if c != "Material Salida"})
     lado = lado.rename(columns={"Material Salida": "Material Entrada"})
     return skp.merge(lado, on="Material Entrada", how="inner")
+
+
+# ---------------------------------------------------------------- base exploratoria (Notebooks 01 en adelante)
+PF, RF = "Preset Fuerza [kN]", "Fuerza Real Prom.  [kN]"        # ojo: doble espacio en el nombre real
+PB, RB = "Preset Bending", "Bending Prom. Real [kN]"
+PBK, RBK = "Back Preset Tensión [kN]", "Back Tensión Real Prom. [kN]"
+PFR, RFR = "Front Preset Tensión [kN]", "Front Tensión Real Prom. [kN]"
+
+FAMILIAS_B2 = {
+    "Forma": ["TABLEADO", "ONDULACIÓN", "FUERA DE PLANEZA", "DOBLEZ TRANSVERSAL", "DOBLEZ PAÑUELO", "AGLOBADO", "COLA DE PESCADO"],
+    "Superficie y manejo": ["MARCAS", "SOMBRAS", "RAYAS", "PLASTAS", "MALTRATO", "MANCHAS DE GRASA Y/O ACEITE"],
+    "Enrollado": ["MAL ENROLLADO", "TELESCOPIADO", "TENSIÓN DE ENROLLADO", "COLEADO"],
+    "Bordes": ["ORILLA DEFECTUOSA", "PUNTA RASGADA", "REVENTÓN"],
+    "Metalúrgico (acería / MC4)": ["INCLUSIONES", "ESCAMAS", "ÓXIDO ROJO", "ÓXIDO SIN DESCASCARADO", "AGUJEROS",
+                                   "FUERA DE PROPIEDADES MECANICAS", "FALTA DE PROPIEDADES MECANICAS"],
+}
+
+
+def base_exploratoria(mc4: pd.DataFrame, skp: pd.DataFrame):
+    """Piezas del Skinpass ligadas a su rollo de MC4, con las variables exploratorias del Notebook 01.
+
+    Devuelve (L, X, D):
+      L: join pieza-rollo en orden cronológico (columnas del MC4 con sufijo ' MC4').
+      X: variables derivadas por bloque, controles, agrupaciones y etiquetas B (Administrativa, B1, B2, B2 · familia).
+      D: defectos del Skinpass en formato largo (un renglón por defecto).
+    Las derivadas son exploratorias; su versión formal (extremos, faltantes) es la del Notebook 03.
+    """
+    M = lambda c: f"{c} MC4"
+    L = unir_mc4_skp(mc4, skp).sort_values("Fecha Inicio").reset_index(drop=True)
+    X = pd.DataFrame(index=L.index)
+    # Respuesta A
+    X["ΔFuerza"] = L[RF] - L[PF]
+    X["ΔBending"] = L[RB] - L[PB]
+    X["ΔBack"] = L[RBK] - L[PBK]
+    X["ΔFront"] = L[RFR] - L[PFR]
+    X["Fuerza real"] = L[RF]
+    X["Bending real"] = L[RB]
+    X["Elongación"] = L["Elongación"]
+    # MC4 geometría
+    lo, hi = CORONA_VALIDA_UM
+    cor = L[M("Corona Salida")]
+    X["Corona (µm)"] = cor.where(cor.between(lo, hi))
+    X["Corona relativa (%)"] = 100 * X["Corona (µm)"] / (1000 * L[M("Espesor")])
+    X["Acuñamiento (µm)"] = L[M("Acuñamiento Salida")]
+    X["Taper medido"] = L[M("Taper Medido")]
+    X["Error espesor (µm)"] = 1000 * (L[M("Espesor")] - L[M("Espesor Objetivo")])
+    X["Error ancho (mm)"] = L[M("Ancho")] - L[M("Ancho Objetivo")]
+    X["Canteo R1"] = L[M("Canteo R1")]
+    X["Offset ancho manual"] = L[M("Offset de Ancho Manual ")]
+    # MC4 térmica
+    X["Error T enrollado (°C)"] = L[M("Temp Enrollado Real")] - L[M("Temp Enrollado Obj")]
+    X["Error T acabado (°C)"] = L[M("Temp Acabado Real")] - L[M("Temp Acabado Obj")]
+    X["Caída F1→F7 (°C)"] = L[M("Temp. F1")] - L[M("Temp. F7")]
+    X["Asimetría acabador (°C)"] = (L[M("Temp. Acabador Sup. A")] - L[M("Temp. Acabador Sup. B")]).abs()
+    X["Looper media (MPa)"] = L[[M(f"Tensión de Looper {i} [Mpa]") for i in range(1, 7)]].mean(axis=1)
+    X["Días MC4 → SKP"] = (L["Fecha Inicio"] - L[M("Fecha Fin")]).dt.total_seconds() / 86400
+    # SKP rodillos y operación
+    X["Campaña"] = (L["Rodillo de Trabajo"] != L["Rodillo de Trabajo"].shift()).cumsum()
+    X["Pieza en campaña"] = X.groupby("Campaña").cumcount() + 1
+    X["Toneladas en campaña"] = L.groupby(X["Campaña"])["Peso"].cumsum() / 1000
+    X["Diámetro rodillo (mm)"] = L["Rodillo de Trabajo Diám. Entrada"]
+    X["Dif. diám. pareja (mm)"] = (L["Rodillo de Trabajo Diám. Entrada"] - L["Rodillo de Trabajo Pareja Diám. entrada"]).abs()
+    X["Corona rodillo"] = L["Rodillo de Trabajo Corona Entrada"]
+    X["Diámetro apoyo sup. (mm)"] = L["Rodillo Apoyo Superior Diám."]
+    # Controles y agrupaciones
+    X["Espesor (mm)"] = L["Espesor Entrada"]
+    X["Ancho (mm)"] = L["Ancho Entrada"]
+    X["Producto"] = (L["Norma"].astype(str) + " | " + L["Grado Salida"].astype(str) + " | "
+                     + pd.cut(L["Espesor Entrada"], CORTES_ESPESOR_MM).astype(str))
+    for c in ["PRAM", "Grado Salida", "Modo Molino", "Dividido", "Es Reproceso"]:
+        X[c] = L[c]
+    X["Programa SKP"] = L["Programa"].astype(str)
+    X["Programa MC4"] = L[M("Programa")].astype("Int64").astype(str)
+    X["Rollo"] = L["Material Entrada"]
+    X["Fecha"] = L["Fecha Inicio"]
+    X["Peso (t)"] = L["Peso"] / 1000
+    # Resultado B (definiciones aprobadas el 2026-11-28)
+    D = defectos_largo(L)
+    D["peso"] = D["d"].str.startswith("PESO")
+    fam_de = {d: f for f, ds in FAMILIAS_B2.items() for d in ds}
+    D["familia"] = D["d"].map(fam_de)
+    R = D[D["ret"] & ~D["peso"]]
+    ret = L["Dictamen"].eq("RETENIDO")
+    medicion_insp = (R["a"] == 0) & R["familia"].isna() & R["d"].str.contains("ANCHO|ESPESOR|TEMPERATURA")
+    X["Retenida"] = ret.values
+    X["Administrativa"] = (ret & ~L.index.isin(R["row"])).values
+    X["B1"] = L.index.isin(R.loc[(R["a"] == 1) | medicion_insp, "row"])
+    X["B2"] = L.index.isin(R.loc[(R["a"] == 0) & R["familia"].notna(), "row"])
+    for f in FAMILIAS_B2:
+        X[f"B2 · {f}"] = L.index.isin(R.loc[(R["a"] == 0) & (R["familia"] == f), "row"])
+    return L, X, D
 
 
 # ---------------------------------------------------------------- diccionario de columnas

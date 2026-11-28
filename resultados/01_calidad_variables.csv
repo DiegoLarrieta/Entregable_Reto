@@ -1,0 +1,25 @@
+bloque,variable,cobertura %,ceros %,distintos,p1,mediana,p99,extremos %
+Respuesta A,ΔFuerza,99.94,0.0,39610.0,-3489.44,-814.6,2528.25,0.0
+Respuesta A,ΔBending,99.94,1.03,1374.0,-758.0,-39.0,266.0,0.15
+Respuesta A,ΔBack,99.94,13.84,5852.0,-65.6,0.0,126.1,9.32
+Respuesta A,ΔFront,99.94,2.69,2860.0,-89.47,-0.2,26.9,13.62
+Respuesta A,Fuerza real,99.94,0.0,28117.0,2420.03,3986.65,7027.97,0.0
+Respuesta A,Elongación,100.0,0.0,49922.0,1.07,1.52,2.79,0.0
+MC4 geometría,Corona (µm),95.65,0.0,28342.0,33.94,60.51,264.87,5.83
+MC4 geometría,Corona relativa (%),95.65,0.0,46092.0,0.62,2.03,9.09,0.62
+MC4 geometría,Acuñamiento (µm),97.67,0.0,30795.0,-59.04,-16.07,97.45,1.29
+MC4 geometría,Taper medido,96.51,15.32,213.0,-38.0,0.0,30.0,4.16
+MC4 geometría,Error espesor (µm),100.0,7.09,316.0,-2.0,2.0,7.0,0.18
+MC4 geometría,Error ancho (mm),100.0,0.12,5058.0,-6.18,1.16,13.02,0.15
+MC4 geometría,Canteo R1,99.74,0.38,25450.0,9.59,32.52,82.03,0.5
+MC4 geometría,Offset ancho manual,99.71,96.63,37.0,-2.0,0.0,1.0,
+MC4 térmica,Error T enrollado (°C),99.94,0.01,17358.0,-130.22,-3.64,7.14,2.27
+MC4 térmica,Error T acabado (°C),99.94,0.13,5549.0,-42.71,-3.36,17.16,0.79
+MC4 térmica,Caída F1→F7 (°C),99.69,0.0,46778.0,55.48,103.66,135.84,0.0
+MC4 térmica,Asimetría acabador (°C),99.16,8.44,35.0,0.0,3.0,15.0,0.08
+MC4 térmica,Looper media (MPa),99.77,0.0,8900.0,10.51,18.64,27.14,0.0
+MC4 térmica,Días MC4 → SKP,100.0,0.0,53604.0,3.45,5.28,24.55,2.21
+SKP rodillos,Diámetro rodillo (mm),100.0,0.0,373.0,402.0,425.8,450.1,0.0
+SKP rodillos,Dif. diám. pareja (mm),97.92,46.24,13.0,0.0,0.1,0.2,0.21
+SKP rodillos,Pieza en campaña,100.0,0.0,285.0,1.0,46.0,189.0,0.0
+SKP rodillos,Toneladas en campaña,100.0,0.0,53845.0,27.19,958.64,3653.76,0.0
