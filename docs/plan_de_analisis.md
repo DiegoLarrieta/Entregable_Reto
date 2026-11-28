@@ -61,6 +61,10 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
 - **Cambio monitoreado (variante de D):** corrección del preset en las piezas 1-20 de campaña; un ensayo aleatorizado sería inviable (~500 campañas); serie de tiempo interrumpida de ~12 semanas contra 2025.
 - B, C y E no se proponen; F queda en espera.
 
+## Decisiones del Notebook 09 (robustez)
+- La afirmación central se sostiene con hiperparámetros ajustados (validación anidada), Ridge, Random Forest y aprendizaje del residuo: el MC4 agrega ≤ 1.5 puntos de R² a ΔBending y nada a B2; 0-4 puntos a ΔFuerza.
+- Exploratorio: en el grado C071TM el MC4 agrega ~17 puntos de R² a ΔFuerza dentro del producto.
+
 ## Notas sobre el preset (no tenemos respuesta de Ternium; ver `preguntas_socio_formador.md`)
 1. **Qué es Δ.** El preset lo fija el control de *setup* antes de procesar la pieza; durante el proceso el control dinámico ajusta la fuerza para alcanzar la elongación. Por eso Δ = Real − Preset se interpreta como **lo que el modelo de setup no anticipó para esa pieza**. Si variables del MC4 explican Δ, el setup no está usando información disponible al llegar el rollo (argumento para el feedforward, intervención B).
 2. **Ceros del preset.** El preset de fuerza en 0 corresponde al modo Fuerza (RCO), que se excluye del Resultado A. El preset de bending en 0 es una **consigna neutra válida** (el bending tiene signo y el real no es 0 cuando el preset lo es) y se conserva.
@@ -71,6 +75,7 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
    - MC4 no explica ninguno → la herencia del MC4 no mueve el esfuerzo.
 
 ## Registro de cambios
+- 2026-11-28: Notebook 09 (robustez de la afirmación central).
 - 2026-11-28: Notebook 08 (evaluación en el periodo reservado, tabla de decisión, protocolos y potencia por simulación).
 - 2026-11-28: Notebook 07 (experimento natural de desgaste del rodillo con efectos fijos y placebo).
 - 2026-11-28: Notebook 06 (mediación por g-computación y Double ML propio con ajuste cruzado agrupado y controles negativos).

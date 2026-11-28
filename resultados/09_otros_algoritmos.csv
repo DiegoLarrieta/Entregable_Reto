@@ -1,0 +1,17 @@
+algoritmo,respuesta,modelo,R² dentro
+Ridge,ΔBending,M1 controles,-0.0
+Ridge,ΔBending,M2 + MC4,0.28
+Ridge,ΔBending,M3 + Skinpass,10.94
+Ridge,ΔBending,M4 completo,11.15
+Ridge,ΔFuerza,M1 controles,4.22
+Ridge,ΔFuerza,M2 + MC4,8.13
+Ridge,ΔFuerza,M3 + Skinpass,4.15
+Ridge,ΔFuerza,M4 completo,8.25
+Random Forest,ΔBending,M1 controles,-0.87
+Random Forest,ΔBending,M2 + MC4,0.19
+Random Forest,ΔBending,M3 + Skinpass,9.78
+Random Forest,ΔBending,M4 completo,11.32
+Random Forest,ΔFuerza,M1 controles,23.46
+Random Forest,ΔFuerza,M2 + MC4,23.56
+Random Forest,ΔFuerza,M3 + Skinpass,22.56
+Random Forest,ΔFuerza,M4 completo,23.11
