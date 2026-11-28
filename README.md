@@ -37,6 +37,7 @@ Ternium pregunta si conviene diferenciar recetas del Skinpass por producto. Liga
 | 00 · Auditoría de datos y definiciones | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/00_Auditoria_Datos.ipynb) |
 | 01 · Exploración por bloques (EDA) | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/01_EDA_MC4_Skinpass.ipynb) |
 | 02 · Correlaciones dentro de producto y PCA | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/02_Correlaciones_y_PCA.ipynb) |
+| 03 · Ingeniería de variables y base analítica | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/03_Feature_Engineering.ipynb) |
 
 **Antecedentes** (Entrega 1):
 

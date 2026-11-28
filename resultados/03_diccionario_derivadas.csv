@@ -1,0 +1,43 @@
+variable,bloque,unidad,fórmula,razón física,momento,% faltante,recorte
+delta_bending,Respuesta A,kN,Bending real − preset de bending,Cuánto tuvo que corregir el bending lo que el setup planeó; respuesta principal,3 · Durante el Skinpass,0.11,—
+delta_fuerza,Respuesta A,kN,Fuerza real − preset de fuerza,Error del setup en fuerza; siempre con efecto de producto (84 % entre productos),3 · Durante el Skinpass,0.11,—
+fuerza_real,Respuesta A / mediador,kN,Fuerza Real Prom.,Esfuerzo efectivo; posible mediador de defectos de forma,3 · Durante el Skinpass,0.11,—
+bending_real,Respuesta A / mediador,kN,Bending Prom. Real,Corrección de forma efectiva,3 · Durante el Skinpass,0.11,—
+delta_fuerza_pct,Respuesta A,%,100 · ΔFuerza / preset,Sesgo relativo del preset (intervención D),3 · Durante el Skinpass,7.53,—
+delta_back,Respuesta A (secundaria),kN,Back real − preset,Casi no se desvía (Notebook 01),3 · Durante el Skinpass,0.11,—
+delta_front,Respuesta A (secundaria),kN,Front real − preset,Sigue al preset (ρ = 0.98),3 · Durante el Skinpass,0.11,—
+corona_relativa_pct,MC4 geometría,%,100 · corona / (1000 · espesor medido); corona válida 0-1000 µm,Perfil comparable entre espesores,1 · Al salir del MC4,2.37,p0.5-p99.5 de entrenamiento + bandera
+acunamiento_um,MC4 geometría,µm,Acuñamiento Salida,Asimetría de espesor entre bordes,1 · Al salir del MC4,2.33,p0.5-p99.5 de entrenamiento + bandera
+taper_medido,MC4 geometría,sin documentar,Taper Medido (Teórico = 0),Variación de ancho en la punta,1 · Al salir del MC4,3.49,p0.5-p99.5 de entrenamiento + bandera
+error_espesor_um,MC4 geometría,µm,1000 · (espesor − objetivo),Cumplimiento de espesor,1 · Al salir del MC4,0.0,p0.5-p99.5 de entrenamiento + bandera
+error_ancho_mm,MC4 geometría,mm,ancho − objetivo,Cumplimiento de ancho,1 · Al salir del MC4,0.0,p0.5-p99.5 de entrenamiento + bandera
+posicion_tol_ancho,MC4 geometría,0-1,(ancho − mín) / (máx − mín),Dónde cae el ancho dentro de su tolerancia (intervención C),1 · Al salir del MC4,0.0,—
+canteo_r1,MC4 geometría,sin documentar,Canteo R1,Palanca de ancho en desbaste (intervención C),1 · Al salir del MC4,0.26,p0.5-p99.5 de entrenamiento + bandera
+canteo_r2,MC4 geometría,sin documentar,Canteo R2,Palanca de ancho en desbaste (intervención C),1 · Al salir del MC4,0.26,p0.5-p99.5 de entrenamiento + bandera
+offset_ancho_manual_aplicado,MC4 geometría,0/1,Offset de Ancho Manual ≠ 0,Corrección manual del operador (96 % vale 0),1 · Al salir del MC4,0.0,—
+error_t_enrollado_c,MC4 térmica,°C,"T enrollado real − objetivo, recortado en −100",Historia térmica final; afecta la dureza,1 · Al salir del MC4,0.06,−100 °C + bandera enrollado_frio
+enrollado_frio,MC4 térmica,0/1,error de enrollado < −100 °C,Evento de enfriamiento fuera de control,1 · Al salir del MC4,0.0,—
+enrollado_fuera_rango,MC4 térmica,0/1,"T enrollado fuera de [mín, máx]",Incumplimiento de la ventana térmica,1 · Al salir del MC4,0.0,—
+error_t_acabado_c,MC4 térmica,°C,T acabado real − objetivo,Temperatura al salir del tren,1 · Al salir del MC4,0.06,p0.5-p99.5 de entrenamiento + bandera
+t_f1_c,MC4 térmica,°C,Temp. F1,Temperatura de entrada al tren (resume F1-F4),1 · Al salir del MC4,0.31,p0.5-p99.5 de entrenamiento + bandera
+caida_f1_f7_c,MC4 térmica,°C,Temp. F1 − Temp. F7,Enfriamiento a lo largo del tren,1 · Al salir del MC4,0.31,p0.5-p99.5 de entrenamiento + bandera
+asimetria_acabador_c,MC4 térmica,°C,|Sup. A − Sup. B|,Diferencia térmica entre lados,1 · Al salir del MC4,0.84,p0.5-p99.5 de entrenamiento + bandera
+looper_media_mpa,MC4 térmica,MPa,media de loopers 1-6,Tensión entre castillos,1 · Al salir del MC4,0.23,p0.5-p99.5 de entrenamiento + bandera
+looper_max_mpa,MC4 térmica,MPa,máximo de loopers 1-6,Pico de tensión entre castillos,1 · Al salir del MC4,0.23,p0.5-p99.5 de entrenamiento + bandera
+t_descarga_horno_c,MC4 térmica,°C,Temperatura Descarga Salida (0 → faltante),Calentamiento del planchón,1 · Al salir del MC4,0.96,—
+tiempo_estancia_horno,MC4 térmica,sin documentar,Tiempo Estancia,Tiempo del planchón en el horno,1 · Al salir del MC4,0.06,p0.5-p99.5 de entrenamiento + bandera
+cubierta_termica_pct,MC4 térmica,%,% Uso Cubierta Térmica,Conservación de calor en la barra de transferencia,1 · Al salir del MC4,0.24,—
+dias_mc4_skp,MC4 → SKP,días,inicio SKP − fin MC4,Espera entre líneas; asociada con ΔFuerza (Notebook 02),2 · Al entrar al Skinpass,0.0,p0.5-p99.5 de entrenamiento + bandera
+piezas_en_campana,SKP rodillos,piezas,posición en la campaña del rodillo,Desgaste dentro de la campaña (usar con ancho),2 · Al entrar al Skinpass,0.0,—
+diametro_rodillo_mm,SKP rodillos,mm,Diám. Entrada del rodillo de trabajo,Vida del rodillo (rectificados),2 · Al entrar al Skinpass,0.0,—
+dif_diametro_pareja_mm,SKP rodillos,mm,|diám. − diám. pareja|,Desbalance entre rodillos de trabajo,2 · Al entrar al Skinpass,2.08,—
+corona_rodillo,SKP rodillos,sin documentar,Rodillo de Trabajo Corona Entrada,Perfil del rodillo,2 · Al entrar al Skinpass,0.0,—
+diametro_apoyo_sup_mm,SKP rodillos,mm,Rodillo Apoyo Superior Diám.,Estado del rodillo de apoyo,2 · Al entrar al Skinpass,0.0,—
+riesgo_spring_back,SKP operación,0/1,Riesgo de Spring Back = SI,Marca de material con recuperación elástica,2 · Al entrar al Skinpass,0.0,—
+espesor_mm,Control,mm,Espesor Entrada,Dimensión del producto,1 · Al salir del MC4,0.0,—
+ancho_mm,Control,mm,Ancho Entrada,Confusor del desgaste (orden de anchos),1 · Al salir del MC4,0.0,—
+espesor_final_nominal_mm,Control,mm,Espesor Final (MC4),"Especificación del producto final, no medición",0 · Especificación de la orden,0.0,—
+holgura_peso_pct,Control / intervención A,%,100 · (peso máx. − peso entrada) / peso máx.,Qué tanto cabe el rollo en la orden,0 · Especificación de la orden,0.0,—
+excede_peso_orden,Control / intervención A,0/1,peso entrada > peso máx. de la orden,Riesgo de PESO (+),0 · Especificación de la orden,0.0,—
+dividido,Control,0/1,Dividido = SI,Decisión de planeación previa,0 · Especificación de la orden,0.0,—
+es_reproceso,Control,0/1,Es Reproceso,Estructura de la orden,0 · Especificación de la orden,0.0,—

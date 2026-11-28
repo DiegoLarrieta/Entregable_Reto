@@ -8,6 +8,8 @@
 *.parquet
 # Copia rápida de los Excel (src/ternium.py la genera y la valida sola)
 !data/cache/*.parquet
+# Base analítica del Notebook 03 (la leen los notebooks 04 en adelante)
+!data/analitica/*.parquet
 
 # Python / Jupyter
 __pycache__/

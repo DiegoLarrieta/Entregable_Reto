@@ -238,6 +238,14 @@ def base_exploratoria(mc4: pd.DataFrame, skp: pd.DataFrame):
     return L, X, D
 
 
+def cargar_base_analitica() -> pd.DataFrame:
+    """Base analítica del Notebook 03 (una fila por pieza ligada). Correr el 03 si no existe."""
+    ruta = DATOS / "analitica" / "base_analitica.parquet"
+    if not ruta.exists():
+        raise FileNotFoundError(f"No existe {ruta}: ejecuta notebooks/03_Feature_Engineering.ipynb primero.")
+    return pd.read_parquet(ruta)
+
+
 # ---------------------------------------------------------------- diccionario de columnas
 # Cada columna se asigna al primer grupo cuya lista de fragmentos coincide con su nombre.
 # El orden importa: "Temp Enrollado Obj" es especificación, "Temp Enrollado Real" es medición.

@@ -1,0 +1,17 @@
+variable,límite inferior,límite superior,piezas recortadas (entrenamiento y prueba)
+corona_relativa_pct,0.528,10.172,752
+acunamiento_um,-56.604,164.638,924
+taper_medido,-54.0,46.0,528
+error_espesor_um,-3.0,8.0,338
+error_ancho_mm,-6.84,16.08,715
+error_t_acabado_c,-46.578,18.527,654
+t_f1_c,948.381,1037.334,572
+caida_f1_f7_c,50.822,138.937,569
+asimetria_acabador_c,0.0,15.0,377
+looper_media_mpa,10.135,27.186,598
+looper_max_mpa,17.06,37.37,575
+tiempo_estancia_horno,145.0,1072.0,484
+dias_mc4_skp,3.341,36.412,551
+canteo_r1,0.952,87.907,499
+canteo_r2,1.0,125.979,483
+error_t_enrollado_c,-100.0,10.781,717

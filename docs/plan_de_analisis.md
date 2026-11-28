@@ -41,6 +41,7 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
    - MC4 no explica ninguno → la herencia del MC4 no mueve el esfuerzo.
 
 ## Registro de cambios
+- 2026-11-28: Notebook 03. Base analítica en `data/analitica/base_analitica.parquet`; prueba final = piezas desde el 2025-11-01; 5 pliegues por Programa MC4; recorte p0.5-p99.5 de entrenamiento con bandera; enrollado frío (< −100 °C) como evento; faltantes sin imputar en la base.
 - 2026-11-26: se agregan los 12 archivos del Skinpass y se propone usar fuerza/bending del Skinpass como resultado.
 - 2026-11-28: se aprueban la definición de administrativa (solo PESO) y la división B1/B2. Con el EDA (Notebook 01): ΔFuerza con efecto de producto obligatorio, ΔBending como respuesta con más variación dentro de producto, tensiones secundarias, regla de corona relativa, reclasificación de Espesor Final.
 - 2026-11-27: se adopta la propuesta de validación metodológica. Población A en modo Elongación; Δ y Real en paralelo; Programa MC4 y SKP como agrupaciones cruzadas; notas sobre el preset.
