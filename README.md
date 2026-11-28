@@ -41,6 +41,7 @@ Ternium pregunta si conviene diferenciar recetas del Skinpass por producto. Liga
 | 04 · Modelos del esfuerzo mecánico (LMM y GBDT) | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/04_Modelos_Esfuerzo_Mecanico.ipynb) |
 | 05 · Modelos de retenciones (B1, B2 y administrativa) | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/05_Modelos_Retenciones.ipynb) |
 | 06 · Análisis causal: mediación y Double ML | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/06_Analisis_Causal_y_Mediacion.ipynb) |
+| 07 · Experimento natural: desgaste del rodillo | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/07_Experimento_Natural_Rodillos.ipynb) |
 
 **Antecedentes** (Entrega 1):
 
