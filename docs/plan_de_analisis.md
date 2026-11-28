@@ -55,6 +55,12 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
 - La vida del rodillo (diámetro, EF de rodillo físico + mes) no se asocia con esfuerzo ni defectos.
 - Candidatas para planta: corrección del preset de fuerza al inicio de campaña (variante de D) y duración de campaña / secuencia de productos para forma.
 
+## Decisiones del Notebook 08 (2026-11-28)
+- **Evaluación en noviembre-diciembre (criterios fijados antes):** se sostienen H1 (peso: 60.8 % vs 0.10 %), H2 (MC4 no mejora ΔBending), H4 (asentamiento, −156 kN) y H5 (días → +66 kN por DE). **Se refuta H3**: el operador no mejora la predicción de ΔBending en datos nuevos (−6.1 pts). Transparencia: la tasa de H1 en prueba se consultó al preparar el protocolo.
+- **Experimento principal: intervención A**, ensayo aleatorizado **por rollo** que excede la orden, bloqueado por PRAM × semana, 4 semanas (potencia 0.84 para −50 %). El diseño por PRAM se descarta (potencia ≤ 0.11: un PRAM concentra el 31 % de los eventos). Guardrails: PESO (−) y días de espera con regla de paro.
+- **Cambio monitoreado (variante de D):** corrección del preset en las piezas 1-20 de campaña; un ensayo aleatorizado sería inviable (~500 campañas); serie de tiempo interrumpida de ~12 semanas contra 2025.
+- B, C y E no se proponen; F queda en espera.
+
 ## Notas sobre el preset (no tenemos respuesta de Ternium; ver `preguntas_socio_formador.md`)
 1. **Qué es Δ.** El preset lo fija el control de *setup* antes de procesar la pieza; durante el proceso el control dinámico ajusta la fuerza para alcanzar la elongación. Por eso Δ = Real − Preset se interpreta como **lo que el modelo de setup no anticipó para esa pieza**. Si variables del MC4 explican Δ, el setup no está usando información disponible al llegar el rollo (argumento para el feedforward, intervención B).
 2. **Ceros del preset.** El preset de fuerza en 0 corresponde al modo Fuerza (RCO), que se excluye del Resultado A. El preset de bending en 0 es una **consigna neutra válida** (el bending tiene signo y el real no es 0 cuando el preset lo es) y se conserva.
@@ -65,6 +71,7 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
    - MC4 no explica ninguno → la herencia del MC4 no mueve el esfuerzo.
 
 ## Registro de cambios
+- 2026-11-28: Notebook 08 (evaluación en el periodo reservado, tabla de decisión, protocolos y potencia por simulación).
 - 2026-11-28: Notebook 07 (experimento natural de desgaste del rodillo con efectos fijos y placebo).
 - 2026-11-28: Notebook 06 (mediación por g-computación y Double ML propio con ajuste cruzado agrupado y controles negativos).
 - 2026-11-28: Notebook 05 (retenciones). Se corrige la tautología de B1; GBDT anidados M1-M5 con validación por campaña; logística de forma; O/E por modo y operador; oportunidad de la intervención A.

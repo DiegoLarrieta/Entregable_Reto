@@ -1,0 +1,7 @@
+clave,intervención,evidencia,impacto,solidez,riesgo (3 = bajo),facilidad,total
+A,Peso y programación: dividir o reasignar rollos que exceden la orden,"~790 retenciones y ~19,700 t evitables en 10 meses (05)",3,3,3,3,12
+D,Corregir el preset de fuerza (por producto y al inicio de campaña),Sesgo por producto (02); asentamiento −98 kN (07); sin efecto probado en calidad,1,3,3,3,10
+E,Estandarizar la práctica de bending entre operadores,Brecha de ~140 kN (04); sin patrón en defectos (05),1,2,2,2,7
+F,Duración de campaña / secuencia de productos,"Forma ×2 en piezas 61-120 (07), con cautelas",2,1,2,2,7
+B,Feedforward MC4 → preset de bending,MC4 no explica el esfuerzo (04); bending real se satura (04),1,1,2,2,6
+C,"Corrección de ancho en MC4 (canteo, offset)",ANCHO es regla sobre la medición; MC4 no aporta a B1 sin tautología (05),2,1,1,1,5
