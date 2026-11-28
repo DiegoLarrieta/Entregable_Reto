@@ -38,6 +38,7 @@ Ternium pregunta si conviene diferenciar recetas del Skinpass por producto. Liga
 | 01 · Exploración por bloques (EDA) | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/01_EDA_MC4_Skinpass.ipynb) |
 | 02 · Correlaciones dentro de producto y PCA | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/02_Correlaciones_y_PCA.ipynb) |
 | 03 · Ingeniería de variables y base analítica | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/03_Feature_Engineering.ipynb) |
+| 04 · Modelos del esfuerzo mecánico (LMM y GBDT) | [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DiegoLarrieta/Entregable_Reto/blob/main/notebooks/04_Modelos_Esfuerzo_Mecanico.ipynb) |
 
 **Antecedentes** (Entrega 1):
 

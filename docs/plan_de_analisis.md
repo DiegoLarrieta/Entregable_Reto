@@ -31,6 +31,13 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
 - `Días MC4 → SKP` entra como variable de interés para el problema A (ρ = 0.23 con ΔFuerza); no se usa para B1 ni administrativa, donde puede ser consecuencia.
 - **Intervención candidata D:** recalibración del preset de fuerza por producto (sesgo de −32 % a +14 %, ligado al espesor). Revisar antes el posible tope en −40 %.
 
+## Decisiones del Notebook 04 (2026-11-28)
+- **El preset no es predictor de su propio Δ** (acoplamiento matemático: Δ = real − preset). Solo entra, como bloque "Setup", en los modelos de los valores reales.
+- El bloque Skinpass se valida también con **pliegues por campaña**: los diámetros identifican la campaña y sin esa validación su aporte se duplica.
+- Respuesta parcial a la tesis A: dentro de producto el MC4 aporta < 1 punto de R² fuera de muestra a ΔBending y ~1-2 a ΔFuerza. El programa y la campaña del Skinpass concentran 21-32 % de la varianza; el operador explica ~12 % de ΔBending y es lo que generaliza.
+- El bending real se satura cuando el preset pide más de ~150 kN sobre lo normal del producto: la intervención B tiene techo.
+- **Intervención candidata E:** estandarizar la práctica de operación del bending (dos operadores con ΔBending ~140 kN distinto).
+
 ## Notas sobre el preset (no tenemos respuesta de Ternium; ver `preguntas_socio_formador.md`)
 1. **Qué es Δ.** El preset lo fija el control de *setup* antes de procesar la pieza; durante el proceso el control dinámico ajusta la fuerza para alcanzar la elongación. Por eso Δ = Real − Preset se interpreta como **lo que el modelo de setup no anticipó para esa pieza**. Si variables del MC4 explican Δ, el setup no está usando información disponible al llegar el rollo (argumento para el feedforward, intervención B).
 2. **Ceros del preset.** El preset de fuerza en 0 corresponde al modo Fuerza (RCO), que se excluye del Resultado A. El preset de bending en 0 es una **consigna neutra válida** (el bending tiene signo y el real no es 0 cuando el preset lo es) y se conserva.
@@ -41,6 +48,7 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
    - MC4 no explica ninguno → la herencia del MC4 no mueve el esfuerzo.
 
 ## Registro de cambios
+- 2026-11-28: Notebook 04 (modelos del esfuerzo). Se corrige el acoplamiento Δ-preset, se agrega validación por campaña y el análisis por operador.
 - 2026-11-28: Notebook 03. Base analítica en `data/analitica/base_analitica.parquet`; prueba final = piezas desde el 2025-11-01; 5 pliegues por Programa MC4; recorte p0.5-p99.5 de entrenamiento con bandera; enrollado frío (< −100 °C) como evento; faltantes sin imputar en la base.
 - 2026-11-26: se agregan los 12 archivos del Skinpass y se propone usar fuerza/bending del Skinpass como resultado.
 - 2026-11-28: se aprueban la definición de administrativa (solo PESO) y la división B1/B2. Con el EDA (Notebook 01): ΔFuerza con efecto de producto obligatorio, ΔBending como respuesta con más variación dentro de producto, tensiones secundarias, regla de corona relativa, reclasificación de Espesor Final.

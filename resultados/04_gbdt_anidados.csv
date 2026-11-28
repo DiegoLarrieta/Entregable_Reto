@@ -1,0 +1,17 @@
+respuesta,modelo,R² total %,R² dentro de producto %,RMSE kN
+ΔBending,M1 controles,1.48,-0.79,184.17
+ΔBending,M2 + MC4,3.13,0.9,182.62
+ΔBending,M3 + Skinpass,25.5,23.78,160.16
+ΔBending,M4 completo,22.97,21.19,162.86
+Bending real,M1 controles,19.96,9.93,151.52
+Bending real,M2 + MC4,22.33,12.59,149.27
+Bending real,M3 + Skinpass,70.34,66.63,92.23
+Bending real,M4 completo,69.74,65.95,93.17
+ΔFuerza,M1 controles,87.35,24.92,450.58
+ΔFuerza,M2 + MC4,87.67,26.8,444.92
+ΔFuerza,M3 + Skinpass,89.1,35.31,418.25
+ΔFuerza,M4 completo,89.3,36.5,414.38
+Fuerza real,M1 controles,84.75,63.45,411.48
+Fuerza real,M2 + MC4,85.48,65.21,401.47
+Fuerza real,M3 + Skinpass,88.09,71.45,363.65
+Fuerza real,M4 completo,88.35,72.07,359.69

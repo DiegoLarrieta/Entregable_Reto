@@ -1,0 +1,69 @@
+,coef,bajo,alto,bloque,respuesta
+espesor_mm,-4.34,-7.9,-0.78,Controles,ΔBending
+ancho_mm,0.73,-2.03,3.48,Controles,ΔBending
+espesor_final_nominal_mm,2.31,-1.25,5.88,Controles,ΔBending
+peso_entrada_t,-3.32,-5.56,-1.07,Controles,ΔBending
+dividido,4.84,2.72,6.95,Controles,ΔBending
+holgura_peso_pct,-0.95,-3.06,1.16,Controles,ΔBending
+corona_relativa_pct,-4.02,-5.74,-2.3,MC4 geometría,ΔBending
+acunamiento_um,3.59,1.99,5.2,MC4 geometría,ΔBending
+taper_medido,0.99,-0.46,2.44,MC4 geometría,ΔBending
+error_espesor_um,-0.16,-1.7,1.38,MC4 geometría,ΔBending
+error_ancho_mm,-4.29,-7.23,-1.34,MC4 geometría,ΔBending
+posicion_tol_ancho,3.85,1.01,6.7,MC4 geometría,ΔBending
+canteo_r1,1.43,-0.17,3.03,MC4 geometría,ΔBending
+canteo_r2,-2.45,-4.15,-0.76,MC4 geometría,ΔBending
+offset_ancho_manual_aplicado,1.41,-0.08,2.89,MC4 geometría,ΔBending
+error_t_enrollado_c,0.25,-1.7,2.2,MC4 térmica,ΔBending
+enrollado_frio,-0.32,-1.93,1.28,MC4 térmica,ΔBending
+enrollado_fuera_rango,0.31,-1.48,2.1,MC4 térmica,ΔBending
+error_t_acabado_c,1.71,0.03,3.39,MC4 térmica,ΔBending
+t_f1_c,-8.71,-11.74,-5.69,MC4 térmica,ΔBending
+caida_f1_f7_c,5.78,2.9,8.65,MC4 térmica,ΔBending
+asimetria_acabador_c,-0.97,-2.7,0.77,MC4 térmica,ΔBending
+looper_media_mpa,5.31,3.1,7.52,MC4 térmica,ΔBending
+looper_max_mpa,-5.39,-7.62,-3.16,MC4 térmica,ΔBending
+t_descarga_horno_c,-0.21,-1.71,1.28,MC4 térmica,ΔBending
+tiempo_estancia_horno,0.25,-1.29,1.79,MC4 térmica,ΔBending
+cubierta_termica_pct,0.99,-0.62,2.59,MC4 térmica,ΔBending
+dias_mc4_skp,4.9,3.26,6.54,Espera MC4→SKP,ΔBending
+piezas_en_campana,-8.54,-11.49,-5.6,Skinpass,ΔBending
+diametro_rodillo_mm,-5.19,-8.8,-1.59,Skinpass,ΔBending
+dif_diametro_pareja_mm,-0.47,-3.08,2.14,Skinpass,ΔBending
+corona_rodillo,-1.47,-5.07,2.14,Skinpass,ΔBending
+diametro_apoyo_sup_mm,-1.47,-5.39,2.44,Skinpass,ΔBending
+riesgo_spring_back,-2.41,-3.88,-0.93,Skinpass,ΔBending
+espesor_mm,-35.72,-45.15,-26.29,Controles,ΔFuerza
+ancho_mm,-72.6,-79.99,-65.2,Controles,ΔFuerza
+espesor_final_nominal_mm,-29.1,-38.54,-19.66,Controles,ΔFuerza
+peso_entrada_t,-4.72,-10.68,1.23,Controles,ΔFuerza
+dividido,-2.86,-8.47,2.76,Controles,ΔFuerza
+holgura_peso_pct,-11.72,-17.31,-6.12,Controles,ΔFuerza
+corona_relativa_pct,47.74,43.17,52.31,MC4 geometría,ΔFuerza
+acunamiento_um,5.2,0.94,9.46,MC4 geometría,ΔFuerza
+taper_medido,0.62,-3.22,4.46,MC4 geometría,ΔFuerza
+error_espesor_um,4.79,0.71,8.88,MC4 geometría,ΔFuerza
+error_ancho_mm,-102.08,-109.89,-94.26,MC4 geometría,ΔFuerza
+posicion_tol_ancho,95.43,87.88,102.98,MC4 geometría,ΔFuerza
+canteo_r1,4.63,0.38,8.87,MC4 geometría,ΔFuerza
+canteo_r2,-26.69,-31.19,-22.18,MC4 geometría,ΔFuerza
+offset_ancho_manual_aplicado,0.14,-3.79,4.07,MC4 geometría,ΔFuerza
+error_t_enrollado_c,-21.51,-26.68,-16.35,MC4 térmica,ΔFuerza
+enrollado_frio,-9.74,-13.99,-5.49,MC4 térmica,ΔFuerza
+enrollado_fuera_rango,-2.8,-7.55,1.95,MC4 térmica,ΔFuerza
+error_t_acabado_c,7.55,3.09,12.01,MC4 térmica,ΔFuerza
+t_f1_c,-66.08,-74.12,-58.05,MC4 térmica,ΔFuerza
+caida_f1_f7_c,72.9,65.27,80.53,MC4 térmica,ΔFuerza
+asimetria_acabador_c,0.36,-4.26,4.99,MC4 térmica,ΔFuerza
+looper_media_mpa,10.74,4.87,16.61,MC4 térmica,ΔFuerza
+looper_max_mpa,-23.42,-29.33,-17.52,MC4 térmica,ΔFuerza
+t_descarga_horno_c,3.29,-0.68,7.27,MC4 térmica,ΔFuerza
+tiempo_estancia_horno,1.85,-2.24,5.94,MC4 térmica,ΔFuerza
+cubierta_termica_pct,6.23,1.96,10.49,MC4 térmica,ΔFuerza
+dias_mc4_skp,46.45,42.09,50.82,Espera MC4→SKP,ΔFuerza
+piezas_en_campana,52.63,44.49,60.77,Skinpass,ΔFuerza
+diametro_rodillo_mm,43.75,33.36,54.15,Skinpass,ΔFuerza
+dif_diametro_pareja_mm,4.7,-2.41,11.81,Skinpass,ΔFuerza
+corona_rodillo,21.3,10.81,31.79,Skinpass,ΔFuerza
+diametro_apoyo_sup_mm,5.18,-6.37,16.74,Skinpass,ΔFuerza
+riesgo_spring_back,8.93,5.02,12.83,Skinpass,ΔFuerza
