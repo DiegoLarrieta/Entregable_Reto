@@ -45,6 +45,11 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
 - Intervención A: ~790 retenciones por PESO (+) y ~19,700 t evitables en enero-octubre (estimación optimista).
 - Operador sin patrón claro en defectos: la intervención E no tiene evidencia de calidad.
 
+## Decisiones del Notebook 06 (2026-11-28)
+- **Mediación MC4 → fuerza → forma: nula** (+0.003 pp). Pista débil por la vía del bending (+0.013 pp), no confirmable con datos históricos.
+- **Controles negativos fallan** para fuerza y bending (efectos imposibles sobre metalúrgico y PESO −): hay confusión no medida. No se hacen afirmaciones causales sobre defectos con datos históricos.
+- **Días de espera → ΔFuerza:** +49 kN por DE (IC 40-59), con controles negativos que pasan. Único efecto causal plausible de la herencia del MC4 sobre el esfuerzo.
+
 ## Notas sobre el preset (no tenemos respuesta de Ternium; ver `preguntas_socio_formador.md`)
 1. **Qué es Δ.** El preset lo fija el control de *setup* antes de procesar la pieza; durante el proceso el control dinámico ajusta la fuerza para alcanzar la elongación. Por eso Δ = Real − Preset se interpreta como **lo que el modelo de setup no anticipó para esa pieza**. Si variables del MC4 explican Δ, el setup no está usando información disponible al llegar el rollo (argumento para el feedforward, intervención B).
 2. **Ceros del preset.** El preset de fuerza en 0 corresponde al modo Fuerza (RCO), que se excluye del Resultado A. El preset de bending en 0 es una **consigna neutra válida** (el bending tiene signo y el real no es 0 cuando el preset lo es) y se conserva.
@@ -55,6 +60,7 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
    - MC4 no explica ninguno → la herencia del MC4 no mueve el esfuerzo.
 
 ## Registro de cambios
+- 2026-11-28: Notebook 06 (mediación por g-computación y Double ML propio con ajuste cruzado agrupado y controles negativos).
 - 2026-11-28: Notebook 05 (retenciones). Se corrige la tautología de B1; GBDT anidados M1-M5 con validación por campaña; logística de forma; O/E por modo y operador; oportunidad de la intervención A.
 - 2026-11-28: Notebook 04 (modelos del esfuerzo). Se corrige el acoplamiento Δ-preset, se agrega validación por campaña y el análisis por operador.
 - 2026-11-28: Notebook 03. Base analítica en `data/analitica/base_analitica.parquet`; prueba final = piezas desde el 2025-11-01; 5 pliegues por Programa MC4; recorte p0.5-p99.5 de entrenamiento con bandera; enrollado frío (< −100 °C) como evento; faltantes sin imputar en la base.

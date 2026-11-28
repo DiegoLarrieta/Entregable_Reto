@@ -1,0 +1,11 @@
+análisis,resultado,eventos o piezas,unidad,efecto por 1 DE,IC bajo,IC alto,ingenuo dentro de producto,z
+Fuerza real → forma,b2_forma,101,pp,-0.0147,-0.2077,0.1783,0.2838,-0.1495
+Fuerza real → forma (ajustando por bending real),b2_forma,101,pp,-0.0119,-0.2149,0.1911,0.2838,-0.1151
+Bending real → forma,b2_forma,101,pp,-0.0471,-0.1479,0.0538,-0.0938,-0.9144
+Bending real → forma (ajustando por fuerza real),b2_forma,101,pp,-0.0604,-0.1598,0.0391,-0.0938,-1.1895
+Corona relativa → forma (efecto total),b2_forma,101,pp,0.0902,-0.0464,0.2269,0.2003,1.2941
+Días MC4 → SKP → ΔFuerza,delta_fuerza,43175,kN,49.4449,39.5505,59.3394,60.6851,9.7946
+CONTROL NEGATIVO 1: fuerza real → metalúrgico,b2_metalurgico,34,pp,-0.0663,-0.1187,-0.0139,0.0075,-2.4803
+CONTROL NEGATIVO 2: fuerza real → retención PESO (−),ret_peso_menos,532,pp,-0.4195,-0.719,-0.1199,0.2955,-2.7445
+CONTROL NEGATIVO 3: días → error de espesor del MC4,error_espesor_um,43175,µm,0.0104,-0.0086,0.0293,0.005,1.0722
+CONTROL NEGATIVO 4: días → corona relativa del MC4,corona_relativa_pct,42159,% del espesor,-0.0196,-0.0363,-0.0028,-0.0011,-2.2881
