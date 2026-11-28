@@ -1,0 +1,16 @@
+,odds ratio,IC bajo,IC alto,p
+corona_relativa_pct,1.089,0.938,1.264,0.263
+acunamiento_um,0.901,0.776,1.046,0.172
+canteo_r1,0.771,0.59,1.007,0.056
+error_t_enrollado_c,1.023,0.769,1.36,0.877
+caida_f1_f7_c,1.001,0.824,1.216,0.994
+dias_mc4_skp,1.16,0.985,1.366,0.075
+piezas_en_campana,0.903,0.753,1.082,0.267
+corona_rodillo,1.352,1.065,1.716,0.013
+diametro_rodillo_mm,1.03,0.841,1.262,0.773
+fuerza_real,1.313,1.095,1.575,0.003
+bending_real,0.634,0.485,0.828,0.001
+espesor_mm,0.92,0.785,1.078,0.302
+ancho_mm,1.56,1.217,2.0,0.0
+modo_fuerza,3.848,2.411,6.143,0.0
+logit_tasa_producto,1.368,1.065,1.757,0.014

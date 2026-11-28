@@ -38,6 +38,13 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
 - El bending real se satura cuando el preset pide más de ~150 kN sobre lo normal del producto: la intervención B tiene techo.
 - **Intervención candidata E:** estandarizar la práctica de operación del bending (dos operadores con ΔBending ~140 kN distinto).
 
+## Decisiones del Notebook 05 (2026-11-28)
+- **B1 nunca usa como predictor la medición que define su regla** (error de ancho, de espesor, de enrollado, elongación) ni los días de espera. Con ellas la mejora sobre el azar sube de 9× a 16× por tautología.
+- Respuesta parcial a la tesis B: dentro de producto y con validación por campaña, el MC4 no mejora la predicción de B1 ni de B2. Forma se asocia con modo Fuerza (OR 3.9), fuerza real (OR 1.3), bending real (OR 0.63) y corona del rodillo (OR 1.35).
+- Modo Fuerza: 7.9 veces más defectos de forma de lo esperado por producto; tratar como posible selección.
+- Intervención A: ~790 retenciones por PESO (+) y ~19,700 t evitables en enero-octubre (estimación optimista).
+- Operador sin patrón claro en defectos: la intervención E no tiene evidencia de calidad.
+
 ## Notas sobre el preset (no tenemos respuesta de Ternium; ver `preguntas_socio_formador.md`)
 1. **Qué es Δ.** El preset lo fija el control de *setup* antes de procesar la pieza; durante el proceso el control dinámico ajusta la fuerza para alcanzar la elongación. Por eso Δ = Real − Preset se interpreta como **lo que el modelo de setup no anticipó para esa pieza**. Si variables del MC4 explican Δ, el setup no está usando información disponible al llegar el rollo (argumento para el feedforward, intervención B).
 2. **Ceros del preset.** El preset de fuerza en 0 corresponde al modo Fuerza (RCO), que se excluye del Resultado A. El preset de bending en 0 es una **consigna neutra válida** (el bending tiene signo y el real no es 0 cuando el preset lo es) y se conserva.
@@ -48,6 +55,7 @@ Base: *Propuesta de Validación Metodológica (MC4–Skinpass)* y diagnóstico d
    - MC4 no explica ninguno → la herencia del MC4 no mueve el esfuerzo.
 
 ## Registro de cambios
+- 2026-11-28: Notebook 05 (retenciones). Se corrige la tautología de B1; GBDT anidados M1-M5 con validación por campaña; logística de forma; O/E por modo y operador; oportunidad de la intervención A.
 - 2026-11-28: Notebook 04 (modelos del esfuerzo). Se corrige el acoplamiento Δ-preset, se agrega validación por campaña y el análisis por operador.
 - 2026-11-28: Notebook 03. Base analítica en `data/analitica/base_analitica.parquet`; prueba final = piezas desde el 2025-11-01; 5 pliegues por Programa MC4; recorte p0.5-p99.5 de entrenamiento con bandera; enrollado frío (< −100 °C) como evento; faltantes sin imputar en la base.
 - 2026-11-26: se agregan los 12 archivos del Skinpass y se propone usar fuerza/bending del Skinpass como resultado.
